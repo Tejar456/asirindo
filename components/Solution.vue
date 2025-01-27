@@ -1,9 +1,10 @@
 <template>
-    <!-- Features -->
-    <div class="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto ">
+  <section id="solution">
+    <!-- Solution -->
+    <div class="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <!-- Grid -->
       <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
-        <div>
+        <div data-aos="fade-up">
           <img
             class="rounded-xl"
             src="/assets/img/solution.png"
@@ -11,9 +12,13 @@
           />
         </div>
         <!-- End Col -->
-  
+
         <div class="mb-20">
-          <div class="space-y-6 sm:space-y-8">
+          <div
+            class="space-y-6 sm:space-y-8"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <!-- Title -->
             <div class="mt-3 md:mt-5 mb-3 md:mb-5 px-4 md:px-0">
               <h1 class="text-center text-2xl md:text-4xl font-semibold">
@@ -28,9 +33,9 @@
                 One app to rule them all
               </h2>
               <!-- End Title -->
-  
+
               <!-- List -->
-              <ul class="space-y-2 sm:space-y-4 ">
+              <ul class="space-y-2 sm:space-y-4">
                 <li class="flex gap-x-3">
                   <span
                     class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-gray-300 text-white"
@@ -78,8 +83,8 @@
                   </span>
                   <div class="grow">
                     <p class="text-sm sm:text-base text-gray-700">
-                      Choose, change and play any song easily from categories and
-                      genres.
+                      Choose, change and play any song easily from categories
+                      and genres.
                     </p>
                   </div>
                 </li>
@@ -141,7 +146,7 @@
         </div>
         <!-- End Grid -->
       </div>
-      <!-- End Features -->
+      <!-- End Solution -->
     </div>
-  </template>
-  
+  </section>
+</template>

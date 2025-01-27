@@ -68,6 +68,7 @@ onUnmounted(() => {
 </script>
 
 <template>
+    <section id="content">
     <div class="mb-20 flex items-center overflow-x-hidden justify-center py-16 bg-slate-200" ref="statsSection">
         <div class="w-full max-w-6xl px-4">
             <div class="mt-3" >
@@ -166,6 +167,7 @@ onUnmounted(() => {
             </div>
         </div>
     </div>
+</section>
 </template>
 
 <style scoped>

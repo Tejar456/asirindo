@@ -25,7 +25,7 @@
           <div class="hs-carousel-slide">
             <div class="flex justify-center h-full w-full bg-gray-200">
               <img
-                src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bXVzaWN8ZW58MHx8MHx8fDA%3D"
+                src="assets/img/hero2.jpg"
                 alt="hero"
                 class="object-cover w-full brightness-50"
               />
@@ -34,7 +34,7 @@
           <div class="hs-carousel-slide">
             <div class="flex justify-center h-full w-full bg-gray-300">
               <img
-                src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3R1ZGlvJTIwbXVzaWN8ZW58MHx8MHx8fDA%3D"
+                src="/assets/img/hero3.jpg"
                 alt="hero"
                 class="object-cover w-full brightness-50"
               />
@@ -98,7 +98,7 @@
     </div>
     <!-- Overlay -->
     <div
-      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-10 mt-10 w-4/5"
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-10 mt-10 w-4/5" 
     >
       <h1 class="text-4xl font-semibold">
         {{ currentText }}
@@ -126,15 +126,15 @@
     <div
       class="banner w-full h-auto p-5 bg-[#1E1E1E] flex justify-center items-center flex-col gap-5 text-center"
     >
-      <h2 class="text-xl md:text-3xl text-white font-semibold">
+      <h2 class="text-xl md:text-3xl text-white font-semibold" data-aos="fade-up">
         Need music license? Talk to us!
       </h2>
-      <p class="text-white text-sm">
+      <p class="text-white text-sm" data-aos="fade-up">
         ASIRINDO had licensed thousands of Indonesian songs to use legally in
         restaurants, cafes, hotels, karaoke, broadcasts and any other
         businesses, so you don't have to
       </p>
-      <div class="flex gap-10 justify-center">
+      <div class="flex gap-10 justify-center" data-aos="fade-up">
         <button
           type="button"
           class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-black/30 text-gray-50 shadow-sm hover:bg-black/70 focus:outline-none focus:bg-black/70 disabled:opacity-50 disabled:pointer-events-none"
