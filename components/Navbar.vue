@@ -1,8 +1,7 @@
 <template>
     <div>
         <!-- ========== HEADER ========== -->
-        <header
-            ref="headerRef"
+        <header ref="headerRef"
             class="fixed top-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 h-16 lg:h-20 w-full transition-all duration-300 scroll-smooth"
             :class="{
                 'bg-white/0 backdrop-blur-0 border-transparent': !isScrolled,
@@ -51,42 +50,43 @@
                             class="py-2 md:py-0 flex flex-col md:flex-row md:items-center md:justify-end gap-0.5 md:gap-1">
                             <Nuxt-link
                                 class="p-2 flex items-center text-sm text-white  hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
-                                to="/" aria-current="page" >
+                                to="/" aria-current="page">
                                 Home
                             </Nuxt-link>
                             <Nuxt-link
                                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
-                                to="#about" >
+                                to="#about">
                                 About
                             </Nuxt-link>
                             <Nuxt-link
                                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
-                                to="#solution" >
+                                to="#solution">
                                 Solution
                             </Nuxt-link>
                             <Nuxt-link
                                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
-                                to="#content" >
+                                to="#content">
                                 Content
                             </Nuxt-link>
                             <Nuxt-link
                                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
-                                to="#management" >
+                                to="#management">
                                 Management
                             </Nuxt-link>
                             <Nuxt-link
                                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
-                                to="https://docs.google.com/spreadsheets/d/1R-3Vlsx_FypKPsbt7SlUo0b58TaGLpH_/edit?gid=821110041#gid=821110041" >
+                                to="https://docs.google.com/spreadsheets/d/1R-3Vlsx_FypKPsbt7SlUo0b58TaGLpH_/edit?gid=821110041#gid=821110041"
+                                target="_blank">
                                 Catalog
                             </Nuxt-link>
                             <Nuxt-link
                                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
-                                to="#contact" >
+                                to="#contact">
                                 Contact
                             </Nuxt-link>
                             <Nuxt-link
                                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
-                                to="/news" >
+                                to="/news">
                                 News
                             </Nuxt-link>
                         </div>

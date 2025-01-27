@@ -17,7 +17,7 @@
                     <h4 class="font-semibold mb-4 text-xl">Social Media</h4>
                     <div class="flex flex-col space-y-4">
                         <!-- Facebook -->
-                        <a href="https://web.facebook.com/asirindo/"
+                        <a href="https://web.facebook.com/asirindo/" target="_blank"
                             class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path
@@ -27,7 +27,7 @@
                         </a>
 
                         <!-- Instagram -->
-                        <a href="https://www.instagram.com/asirindo/"
+                        <a href="https://www.instagram.com/asirindo/" target="_blank"
                             class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path
@@ -37,7 +37,7 @@
                         </a>
 
                         <!-- Twitter -->
-                        <a href="https://x.com/asirindo"
+                        <a href="https://x.com/asirindo" target="_blank"
                             class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path
