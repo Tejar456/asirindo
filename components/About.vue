@@ -1,6 +1,6 @@
 <template>
     <div
-      class="mt-3 md:mt-5 mb-3 md:mb-5 px-4 md:px-0 flex justify-center items-center flex-col w-full h-screen"
+      class="mt-3 md:mt-5 mb-3 md:mb-5 px-4 md:px-0 flex justify-center items-center flex-col w-full h-full md:h-screen"
     >
       <h1 class="text-center text-2xl md:text-4xl font-semibold">
         About Asirindo
@@ -97,4 +97,3 @@
       </div>
     </div>
   </template>
-  
