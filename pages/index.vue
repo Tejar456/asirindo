@@ -1,7 +1,10 @@
 <template>
-    <div>
-        <Content />
-        <Management />
-        <Contact />
-    </div>
+  <div>
+    <Hero />
+    <About />
+    <Solution />
+    <Content />
+    <Management />
+    <Contact />
+  </div>
 </template>
