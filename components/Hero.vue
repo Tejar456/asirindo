@@ -16,7 +16,7 @@
           </div>
           <div class="hs-carousel-slide">
             <div class="flex justify-center h-full w-full bg-gray-200">
-              <img src="assets/img/hero2.jpg" alt="hero" class="object-cover w-full brightness-50" />
+              <img src="assets/img/hero4.jpg" alt="hero" class="object-cover w-full brightness-50" />
             </div>
           </div>
           <div class="hs-carousel-slide">

@@ -37,23 +37,24 @@
             <div class="text-center" data-aos="flip-right" duration="3000">
               <img
                 class="rounded-full border border-slate-500 shadow-lg w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto"
-                src="assets/img/user.jpg" alt="Salfitri" />
+                src="https://pagedone.io/asset/uploads/1696238396.png" alt="Salfitri" />
               <div class="mt-2 sm:mt-4">
-                <h3 class="font-medium text-lg sm:text-xl text-gray-800">........</h3>
-                <p class="text-sm sm:text-md text-gray-600">Financial</p>
+                <h3 class="font-medium text-lg sm:text-xl text-gray-800">Patricia Angely</h3>
+                <p class="text-sm sm:text-md text-gray-600">Co-Founder</p>
               </div>
             </div>
 
             <div class="text-center" data-aos="flip-right" duration="3000">
               <img
                 class="rounded-full border border-slate-500 shadow-lg w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto"
-                src="assets/img/user.jpg" alt="Salfitri" />
+                src="https://pagedone.io/asset/uploads/1696238425.png" alt="Salfitri" />
               <div class="mt-2 sm:mt-4">
-                <h3 class="font-medium text-lg sm:text-xl text-gray-800">......</h3>
-                <p class="text-sm sm:text-md text-gray-600">Financial</p>
+                <h3 class="font-medium text-lg sm:text-xl text-gray-800">Yasmine Tano</h3>
+                <p class="text-sm sm:text-md text-gray-600">Product
+                  Manager</p>
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
