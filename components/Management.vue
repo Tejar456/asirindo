@@ -1,6 +1,6 @@
 <template>
   <section id="management">
-    <div class="mt-3 mb-5">
+    <div class="h-full flex items-center md:h-[90vh]">
       <div class="mx-auto px-4">
         <h1 class="text-center text-2xl md:text-4xl font-semibold" data-aos="fade-up">
           Management
