@@ -10,6 +10,10 @@ useHead({
 });
 
 import { ref, onMounted } from "vue";
+import news1 from '@/assets/img/news1.jpeg';
+import news2 from '@/assets/img/news2.jpg';
+import news3 from '@/assets/img/news3.jpg';
+
 
 const loading = ref(true);
 
@@ -18,6 +22,27 @@ onMounted(() => {
     loading.value = false;
   }, 2000);
 });
+
+const berita = [
+  {
+    id: 1,
+    image: news1,
+    alt: 'news1',
+    title: 'Asirindo Laporkan 15 Pengusaha Karaoke Pengguna Lagu Tanpa Izin'
+  },
+  {
+    id: 2,
+    image: news2, 
+    alt: 'news2',
+    title: 'Asirindo Tunjuk Musik Hub untuk Konten Musik Indonesia yang Legal'
+  },
+  {
+    id: 3,
+    image: news3, 
+    alt: 'news3',
+    title: 'PT. Asirindo Ungkap Pelanggaran HAKI Bos Karaoke Rasa Sayang'
+  }
+];
 </script>
 <template>
   <!-- Title -->
@@ -51,89 +76,27 @@ onMounted(() => {
       </div>
     </div>
   </div>
-
   <!-- End Title -->
   <!-- Card Blog -->
   <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
     <!-- Grid -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Card -->
-      <a class="group flex flex-col focus:outline-none border-2 border-slate-400 rounded-2xl p-4 hover:border-yellow-400 transition-all duration-300 hover:shadow-lg"
-        href="/news/detail">
+      <a v-for="news in berita" :key="news.id" class="group flex flex-col focus:outline-none border-2 border-slate-200 rounded-2xl p-4 hover:border-yellow-400 transition-all duration-300 hover:shadow-lg" href="/news/detail">
         <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-          <img
-            class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
-            src="assets/img/news1.jpeg" alt="Blog Image" />
+          <img class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl" :src="news.image" :alt="news.alt" />
         </div>
-
         <div class="mt-7">
           <h3 class="text-xl font-semibold text-gray-800">
-            Asirindo Laporkan 15 Pengusaha Karaoke Pengguna Lagu Tanpa Izin
+            {{ news.title }}
           </h3>
-
           <div class="flex justify-center mt-5">
-            <p
-              class="inline-flex items-center gap-x-2 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 transition-colors duration-300 rounded-lg text-sm text-gray-800 font-medium">
+            <p class="inline-flex items-center gap-x-2 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 transition-colors duration-300 rounded-lg text-sm text-gray-800 font-medium">
               Read more
-              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m9 18 6-6-6-6" />
               </svg>
-            </p>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
-      <!-- Card -->
-      <a class="group flex flex-col focus:outline-none border-2 border-slate-400 rounded-2xl p-4 hover:border-yellow-400 transition-all duration-300 hover:shadow-lg"
-        href="/news/detail">
-        <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-          <img
-            class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
-            src="assets/img/news1.jpeg" alt="Blog Image" />
-        </div>
-
-        <div class="mt-7">
-          <h3 class="text-xl font-semibold text-gray-800">
-            Asirindo Laporkan 15 Pengusaha Karaoke Pengguna Lagu Tanpa Izin
-          </h3>
-
-          <div class="flex justify-center mt-5">
-            <p
-              class="inline-flex items-center gap-x-2 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 transition-colors duration-300 rounded-lg text-sm text-gray-800 font-medium">
-              Read more
-              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </p>
-          </div>
-        </div>
-      </a>
-      <!-- End Card -->
-      <!-- Card -->
-      <a class="group flex flex-col focus:outline-none border-2 border-slate-400 rounded-2xl p-4 hover:border-yellow-400 transition-all duration-300 hover:shadow-lg"
-        href="/news/detail">
-        <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
-          <img
-            class="size-full absolute top-0 start-0 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
-            src="assets/img/news1.jpeg" alt="Blog Image" />
-        </div>
-
-        <div class="mt-7">
-          <h3 class="text-xl font-semibold text-gray-800">
-            Asirindo Laporkan 15 Pengusaha Karaoke Pengguna Lagu Tanpa Izin
-          </h3>
-
-          <div class="flex justify-center mt-5">
-            <p
-              class="inline-flex items-center gap-x-2 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 transition-colors duration-300 rounded-lg text-sm text-gray-800 font-medium">
-              Read more
-              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </p>
+              </p>
           </div>
         </div>
       </a>
