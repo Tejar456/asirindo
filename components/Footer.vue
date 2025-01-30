@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-gray-900 text-white py-10">
+    <footer class=" text-white py-10" style="background-color: #1E1E1E;">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-20 md:ml-28">
                 <!-- Company Description -->
