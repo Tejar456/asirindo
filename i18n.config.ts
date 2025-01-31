@@ -68,6 +68,7 @@ export default defineI18nConfig(() => ({
       // news
       titlenews: "Berita",
       read: "Baca Selengkapnya",
+      readnews: "Baca Berita"
     },
     en: {
       // navbar
@@ -138,6 +139,7 @@ export default defineI18nConfig(() => ({
       // news
       titlenews: "News",
       read: "Read More",
+      readnews: "Read News"
     },
   },
 }));

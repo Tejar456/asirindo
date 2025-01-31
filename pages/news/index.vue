@@ -69,9 +69,9 @@ const berita = [
             {{ $t("titlenews") }}
           </h1>
           <h4 class="text-white text-base sm:text-lg font-semibold z-10 text-center">
-            <nuxt-link to="/" class="text-white hover:text-yellow-100">Home</nuxt-link>
+            <nuxt-link to="/" class="text-white hover:text-yellow-100">{{ $t ("home") }}</nuxt-link>
             >
-            <nuxt-link to="/news" class="text-yellow-400">News</nuxt-link>
+            <nuxt-link to="/news" class="text-yellow-400">{{ $t ("news") }}</nuxt-link>
           </h4>
         </div>
       </div>
