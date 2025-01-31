@@ -90,7 +90,7 @@
                                 News
                             </Nuxt-link>
 
-                            <div class="hs-dropdown relative inline-flex">
+                            <!-- <div class="hs-dropdown relative inline-flex">
                                 <button id="hs-dropdown-custom-trigger" type="button"
                                     class="hs-dropdown-toggle py-1 ps-1 pe-3 inline-flex items-center text-sm font-medium rounded-full border border-gray-200 bg-white text-white shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
                                     <span v-html="selectedLanguage.flag"></span>
@@ -118,7 +118,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
