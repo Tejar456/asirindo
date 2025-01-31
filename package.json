@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/i18n": "^9.1.4",
     "aos": "^2.3.4",
     "nuxt": "^3.15.1",
     "preline": "^2.7.0",
