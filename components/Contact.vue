@@ -3,7 +3,7 @@
     <div class="bg-slate-200 py-10">
       <div class="mx-auto px-4">
         <h1 class="text-center text-2xl md:text-4xl font-semibold" data-aos="fade-up">
-          Contact Us
+          {{ $t("titlecontact") }}
         </h1>
         <div class="mx-auto h-1 w-20 md:w-28 bg-yellow-400 rounded mb-3 md:mb-4 mt-3 md:mt-4" data-aos="fade-up"></div>
         <h2 class="text-center text-base md:text-lg mt-6 max-w-xl mx-auto" data-aos="fade-up">
@@ -67,7 +67,7 @@
               <div class="mt-6">
                 <button
                   class="group inline-flex items-center gap-x-2 py-3 px-4 bg-yellow-400 hover:bg-yellow-300 transition-colors duration-300 font-medium text-sm text-neutral-800 rounded-lg focus:outline-none">
-                  Submit
+                  {{ $t("submit") }}
                   <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

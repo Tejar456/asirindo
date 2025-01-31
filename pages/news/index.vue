@@ -65,7 +65,7 @@ const berita = [
         <div
           class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
           <h1 class="text-white text-4xl font-semibold z-10 text-center">
-            News
+            {{ $t("titlenews") }}
           </h1>
           <h4 class="text-white text-base sm:text-lg font-semibold z-10 text-center">
             <nuxt-link to="/" class="text-white hover:text-yellow-100">Home</nuxt-link>
@@ -92,7 +92,7 @@ const berita = [
           </h3>
           <div class="flex justify-center mt-5">
             <p class="inline-flex items-center gap-x-2 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 transition-colors duration-300 rounded-lg text-sm text-gray-800 font-medium">
-              Read more
+              {{ $t("read") }}
               <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m9 18 6-6-6-6" />
               </svg>

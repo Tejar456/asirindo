@@ -1,5 +1,3 @@
-import type Solution from "./components/Solution.vue";
-
 export default defineI18nConfig(() => ({
   fallbackLocale: "id",
   messages: {
@@ -13,24 +11,22 @@ export default defineI18nConfig(() => ({
       management: "Pengelola",
       catalog: "Katalog",
       news: "Berita",
-      //   hero
-      hero: "Musik adalah alat yang efektif untuk melibatkan pelanggan Anda",
-      hero2: "Anda membutuhkan musik di restoran, karaoke, dan hotel Anda",
-      hero3: "Musik adalah bagian integral dalam bisnis perhotelan",
-      hero4: "Bisnis penyiaran perlu memiliki produk yang legal",
-      hero5:
+      // hero
+      text1: "Musik adalah alat yang efektif untuk melibatkan pelanggan Anda",
+      text2: "Anda membutuhkan musik di restoran, karaoke, dan hotel Anda",
+      text3: "Musik adalah bagian integral dalam bisnis perhotelan",
+      text4: "Bisnis penyiaran perlu memiliki produk yang legal",
+      text5:
         "Dukung musik Indonesia dengan lagu-lagu yang terlisensi secara legal",
-      Previous: "Sebelumnya",
+      previous: "Sebelumnya",
       button: "Selanjutnya",
       text: "ASIRINDO adalah solusi lisensi musik satu atap untuk pelanggan bisnis di Indonesia.",
-      Contact: "Hubungi Kami",
-      More: "Pelajari Lebih Lanjut",
+      contactus: "Hubungi Kami",
+      more: "Pelajari Lebih Lanjut",
       talk: "Butuh lisensi musik? Bicaralah kepada kami!",
       talk1:
         "ASIRINDO telah melisensikan ribuan lagu Indonesia untuk digunakan secara legal di restoran, kafe, hotel, karaoke, siaran, dan bisnis lainnya, sehingga Anda tidak perlu khawatir.",
-      talkContact: "Hubungi Kami",
-      talkMore: "Pelajari Lebih Lanjut",
-      //   about
+      // about
       title: "Tentang Asirindo",
       desk: "ASIRINDO adalah pusat musik pertama dan satu-satunya di Indonesia. Kami telah melisensikan ribuan lagu dari ratusan produser dan label sehingga Anda tidak perlu melakukannya. Musik membantu melibatkan pelanggan dengan produk dan layanan Anda. Kami di sini untuk membantu Anda mencapai itu.",
       card1: "Konten 100% Legal",
@@ -45,26 +41,33 @@ export default defineI18nConfig(() => ({
       card4: "Satu Sumber untuk Semua",
       descard4:
         "Anda hanya perlu berurusan dengan ASIRINDO untuk menjadi 100% legal, mendapatkan dukungan profesional, dan katalog musik Indonesia yang paling lengkap.",
-      // solution
-      titlesolution: "Aset Konten Kami",
+        // solution
+        solutionTitle: "Solusi Kami",
+        solutionSubtitle: "Satu aplikasi untuk mengatur semuanya",
+        feature1: "Semua konten dapat diakses dari mana saja di dunia. Tersedia 24-7.",
+        feature2: "Pilih, ubah, dan putar lagu dengan mudah dari kategori dan genre.",
+        feature3: "Buat daftar putar berdasarkan suasana hati, aktivitas, dll.",
+        feature4: "Langganan bulanan. Syarat mudah..",
+      // contet
+      titlecontent: "Aset Konten Kami",
       desksolution:
         "Semua yang kami miliki telah terlisensi secara legal dan siap digunakan.",
       vidio: "VIDEO",
       audio: "AUDIO",
       database: "DATABASE",
       producers: "PRODUSER",
-      //   management
+      // management
       titlemanagement: "Manajemen",
       deskmanagement:
         "ASIRINDO dijaga dengan aman oleh eksekutif musik dengan pengalaman puluhan tahun di bidang lisensi musik.",
-      Director: "Direktur",
-      Financial: "Keuangan",
-      //   kontak
+      director: "Direktur",
+      financial: "Keuangan",
+      // contact
       titlecontact: "Hubungi Kami",
-      Submit: "Kirim",
-      //   news
+      submit: "Kirim",
+      // news
       titlenews: "Berita",
-      Read: "Baca Selengkapnya",
+      read: "Baca Selengkapnya",
     },
     en: {
       // navbar
@@ -77,22 +80,22 @@ export default defineI18nConfig(() => ({
       contact: "Contact",
       news: "News",
       // hero
-      hero: "Music is an effective tool to engage your customers",
-      hero2: "You need music in your restaurants karaoke and hotels",
-      hero3: "Music is an integral part in hospitality business",
-      hero4: "Broadcasting businesses need to have legal products",
-      hero5: "Support Indonesian music with legally licensed songs",
-      Previous: "Previous",
+      text1: "Music is an effective tool to engage your customers",
+      text2: "You need music in your restaurants karaoke and hotels",
+      text3: "Music is an integral part in hospitality business",
+      text4: "Broadcasting businesses need to have legal products",
+      text5: "Support Indonesian music with legally licensed songs",
+      previous: "Previous",
       button: "Next",
-      text: " ASIRINDO is a one stop music licensing solution for business customers in Indonesia.",
-      Contact: "Contact Us",
-      More: "Learn More",
+      text: "ASIRINDO is a one stop music licensing solution for business customers in Indonesia.",
+      contactus: "Contact Us",
+      more: "Learn More",
       talk: "Need music license? Talk to us!",
       talk1:
-        " ASIRINDO had licensed thousands of Indonesian songs to use legally in restaurants, cafes, hotels, karaoke, broadcasts and any other businesses, so you don't have to",
-      talkContact: "Contact Us",
-      talkMore: "Learn More",
-      //   about
+        "ASIRINDO had licensed thousands of Indonesian songs to use legally in restaurants, cafes, hotels, karaoke, broadcasts and any other businesses, so you don't have to",
+      talkcontact: "Contact Us",
+      talkmore: "Learn More",
+      // about
       title: "About Asirindo",
       desk: "ASIRINDO is the first and the only music hub in Indonesia. We've licensed thousands of songs from hundreds of producers and labels so you don't have to. Music helps engage customers with your products and services. We're here to help you achieve that.",
       card1: "100% Legal Content",
@@ -107,25 +110,34 @@ export default defineI18nConfig(() => ({
       card4: "One Resource for All",
       descard4:
         "You only need to deal with ASIRINDO to go 100% legal, get professional support and the most complete Indonesian music catalog.",
-      // solution
-      titlesolution: "Our Content Assets",
+      //   solution
+      solutionTitle: "Our Solution",
+      solutionSubtitle: "One app to rule them all",
+      feature1:
+        "All content accessible from any places in the world. Available 24-7.",
+      feature2:
+        "Choose, change and play any song easily from categories and genres.",
+      feature3: "Create playlists based on moods, activities, etc.",
+      feature4: "Monthly subscription. Easy term..",
+      // content
+      titlecontent: "Our Content Assets",
       desksolution: "Everything we have are legally licensed and ready to use.",
       vidio: "VIDEO",
       audio: "AUDIO",
       database: "DATABASE",
       producers: "PRODUCERS",
-      //   management
+      // management
       titlemanagement: "Management",
       deskmanagement:
         "ASIRINDO is safely guarded by music executives with decades of experiences in music licensing.",
-      Director: "Director",
-      Financial: "Financial",
-      //   contact
+      director: "Director",
+      financial: "Financial",
+      // contact
       titlecontact: "Contact Us",
-      Submit: "Submit",
-      //   news
+      submit: "Submit",
+      // news
       titlenews: "News",
-      Read: "Read More",
+      read: "Read More",
     },
   },
 }));

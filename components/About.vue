@@ -1,3 +1,6 @@
+Untuk mengganti isi teks di kode Vue.js Anda dengan menggunakan variabel internasionalisasi (i18n), Anda perlu mengganti teks statis dengan referensi ke variabel yang sesuai. Berikut adalah contoh bagaimana Anda dapat melakukannya:
+
+```vue
 <template>
   <section id="about">
     <div class="bg-slate-200 py-10" ref="statsSection">
@@ -8,7 +11,7 @@
             class="text-2xl md:text-4xl font-semibold text-slate-800"
             data-aos="fade-up"
           >
-            About Asirindo
+            {{ $t("title") }}
           </h1>
           <div
             class="mx-auto h-1 w-20 md:w-28 bg-yellow-400 rounded my-4"
@@ -18,10 +21,7 @@
             class="text-base md:text-lg text-slate-600 max-w-xl mx-auto"
             data-aos="fade-up"
           >
-            ASIRINDO is the first and the only music hub in Indonesia. We've
-            licensed thousands of songs from hundreds of producers and labels so
-            you don't have to. Music helps engage customers with your products
-            and services. We're here to help you achieve that.
+            {{ $t("desk") }}
           </p>
         </header>
         <div class="flex justify-center mt-4 md:mt-8">
@@ -38,13 +38,12 @@
                 <p
                   class="text-md text-center font-bold tracking-wide text-slate-800"
                 >
-                  100% Legal Content
+                  {{ $t("card1") }}
                 </p>
               </div>
               <div class="w-full p-4 mx-2 md:mx-4">
                 <p class="text-md text-center tracking-wide text-slate-800">
-                  We license music from rights owner. We help you answer the
-                  challenge to go 100% legal.
+                  {{ $t("descard1") }}
                 </p>
               </div>
             </div>
@@ -63,13 +62,12 @@
                 <p
                   class="text-md text-center font-bold tracking-wide text-slate-800"
                 >
-                  Professional Support
+                  {{ $t("card2") }}
                 </p>
               </div>
               <div class="w-full p-4 mx-2 md:mx-4">
                 <p class="text-md text-center tracking-wide text-slate-800">
-                  Our team is the most experienced professionals in the music
-                  licensing field and ready to support all our clients.
+                  {{ $t("descard2") }}
                 </p>
               </div>
             </div>
@@ -88,13 +86,12 @@
                 <p
                   class="text-md text-center font-bold tracking-wide text-slate-800"
                 >
-                  Rich Catalog
+                  {{ $t("card3") }}
                 </p>
               </div>
               <div class="w-full p-4 mx-2 md:mx-4">
                 <p class="text-md text-center tracking-wide text-slate-800">
-                  We have the most complete Indonesian music catalog that is
-                  ready to use to help your enhance your business offers.
+                  {{ $t("descard3") }}
                 </p>
               </div>
             </div>
@@ -109,14 +106,12 @@
                 <p
                   class="text-md text-center font-bold tracking-wide text-slate-800"
                 >
-                  One Resource for All
+                  {{ $t("card4") }}
                 </p>
-              </div>
+              </ div>
               <div class="w-full p-4 mx-2 md:mx-4">
                 <p class="text-md text-center tracking-wide text-slate-800">
-                  You only need to deal with ASIRINDO to go 100% legal, get
-                  professional support and the most complete Indonesian music
-                  catalog.
+                  {{ $t("descard4") }}
                 </p>
               </div>
             </div>

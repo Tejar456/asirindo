@@ -129,7 +129,7 @@
                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
                 to="/news"
               >
-              {{ $t("new") }}
+              {{ $t("news") }}
               </Nuxt-link>
 
               <div class="hs-dropdown relative inline-flex">
