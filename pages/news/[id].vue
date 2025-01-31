@@ -73,7 +73,7 @@ onMounted(() => {
         <div
           class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
           <h1 class="text-white text-4xl font-semibold z-10 text-center">
-            Read News
+            {{ $t ("readnews") }}
           </h1>
           <h4 class="text-white text-base sm:text-lg font-semibold z-10 text-center">
             <nuxt-link to="/" class="text-white hover:text-yellow-100">{{ $t ("home") }}</nuxt-link>
