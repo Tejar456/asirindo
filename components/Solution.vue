@@ -1,7 +1,9 @@
 <template>
   <section id="solution">
     <!-- Solution -->
-    <div class="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-20  mx-auto h-full md:h-[90vh]">
+    <div
+      class="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-20 mx-auto h-full md:h-[90vh]"
+    >
       <!-- Grid -->
       <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
         <div data-aos="fade-up">
@@ -36,9 +38,9 @@
 
               <!-- List -->
               <ul class="space-y-2 sm:space-y-4">
-                <li class="flex gap-x-3">
+                <li class="flex gap-x-3 md:flex-nowrap">
                   <span
-                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-gray-300 text-white"
+                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-gray-300 text-white p-2"
                   >
                     <svg
                       class="shrink-0 size-3.5"
@@ -55,16 +57,18 @@
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </span>
-                  <div class="grow">
-                    <p class="text-sm sm:text-base text-gray-700">
+                  <div class="grow sm:flex-1">
+                    <p
+                      class="text-sm sm:text-base text-gray-700 md:whitespace-nowrap md:overflow-hidden md:text-ellipsis"
+                    >
                       All content accessible from any places in the world.
                       Available 24-7.
                     </p>
                   </div>
                 </li>
-                <li class="flex gap-x-3">
+                <li class="flex gap-x-3 md:flex-nowrap">
                   <span
-                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-gray-300 text-white"
+                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-gray-300 text-white p-2"
                   >
                     <svg
                       class="shrink-0 size-3.5"
@@ -81,16 +85,18 @@
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </span>
-                  <div class="grow">
-                    <p class="text-sm sm:text-base text-gray-700">
+                  <div class="grow sm:flex-1">
+                    <p
+                      class="text-sm sm:text-base text-gray-700 md:whitespace-nowrap md:overflow-hidden md:text-ellipsis"
+                    >
                       Choose, change and play any song easily from categories
                       and genres.
                     </p>
                   </div>
                 </li>
-                <li class="flex gap-x-3">
+                <li class="flex gap-x-3 md:flex-nowrap">
                   <span
-                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-gray-300 text-white"
+                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-gray-300 text-white p-2"
                   >
                     <svg
                       class="shrink-0 size-3.5"
@@ -107,15 +113,15 @@
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </span>
-                  <div class="grow">
+                  <div class="grow sm:flex-1">
                     <p class="text-sm sm:text-base text-gray-700">
                       Create playlists based on moods, activities, etc.
                     </p>
                   </div>
                 </li>
-                <li class="flex gap-x-3">
+                <li class="flex gap-x-3 md:flex-nowrap">
                   <span
-                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-gray-300 text-white"
+                    class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-gray-300 text-white p-2"
                   >
                     <svg
                       class="shrink-0 size-3.5"
@@ -132,7 +138,7 @@
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </span>
-                  <div class="grow">
+                  <div class="grow sm:flex-1">
                     <p class="text-sm sm:text-base text-gray-700">
                       Monthly subscription. Easy term..
                     </p>
