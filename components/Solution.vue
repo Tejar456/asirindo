@@ -107,7 +107,7 @@ Berikut adalah kode Vue.js yang telah dimodifikasi untuk menggunakan `$t()`:
                       fill="none"
                       stroke="currentColor"
                       stroke-width="2"
-                      stroke-line cap="round"
+                      stroke-linecap="round"
                       stroke-linejoin="round"
                     >
                       <polyline points="20 6 9 17 4 12" />
