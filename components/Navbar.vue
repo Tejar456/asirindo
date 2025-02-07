@@ -98,7 +98,7 @@
                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
                 to="#solution"
               >
-                {{ $t("solution") }}
+                {{ $t("licensing") }}
               </Nuxt-link>
               <Nuxt-link
                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"

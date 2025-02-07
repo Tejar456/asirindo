@@ -16,11 +16,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16 mt-10">
           <!-- Form Column -->
           <div class="md:order-2 order-1" data-aos="zoom-in">
-            <form>
+            <form action="https://formspree.io/f/mgvozkbb" method="POST">
               <div class="space-y-4">
                 <!-- Name Input -->
                 <div class="relative">
-                  <input type="text" id="hs-tac-input-name"
+                  <input type="text" id="hs-tac-input-name" name="Name"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
                     placeholder="Name" />
                   <label for="hs-tac-input-name"
@@ -33,7 +33,7 @@
                 <div class="relative">
                   <input type="email" id="hs-tac-input-email"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
-                    placeholder="Email" />
+                    placeholder="Email" name="Email"/>
                   <label for="hs-tac-input-email"
                     class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none peer-focus:text-xs peer-focus:-translate-y-1.5 peer-focus:text-neutral-400 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:text-neutral-400">
                     Email
@@ -44,7 +44,7 @@
                 <div class="relative">
                   <input type="text" id="hs-tac-input-subject"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
-                    placeholder="Subject" />
+                    placeholder="Subject" name="Subject"/>
                   <label for="hs-tac-input-subject"
                     class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none peer-focus:text-xs peer-focus:-translate-y-1.5 peer-focus:text-neutral-400 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:text-neutral-400">
                     Subject
@@ -55,7 +55,7 @@
                 <div class="relative">
                   <textarea id="hs-tac-message"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
-                    placeholder="Message" rows="4"></textarea>
+                    placeholder="Message" rows="4" name="Masage"></textarea>
                   <label for="hs-tac-message"
                     class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none peer-focus:text-xs peer-focus:-translate-y-1.5 peer-focus:text-neutral-400 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:text-neutral-400">
                     Your Message
@@ -65,7 +65,7 @@
 
               <!-- Submit Button -->
               <div class="mt-6">
-                <button
+                <button type="submit"
                   class="group inline-flex items-center gap-x-2 py-3 px-4 bg-yellow-400 hover:bg-yellow-300 transition-colors duration-300 font-medium text-sm text-neutral-800 rounded-lg focus:outline-none">
                   {{ $t("submit") }}
                   <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"

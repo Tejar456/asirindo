@@ -2,7 +2,7 @@
   <div>
     <Hero />
     <About />
-    <Solution />
+    <Licensing />
     <Content />
     <Management />
     <Contact />
