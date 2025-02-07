@@ -14,12 +14,12 @@
       >
         <!-- Logo w/ Collapse Button -->
         <div class="flex items-center justify-between">
-          <Nuxt-link class="flex gap-3" to="#" aria-label="Brand">
-            <img
-              src="assets/img/logo.png"
-              alt="logo"
-              class="w-40 mt-2 md:mt-0"
-            />
+  <Nuxt-link class="flex gap-3" to="#" aria-label="Brand">
+    <img
+      src="assets/img/logo.png"
+      alt="logo"
+      class="w-48 sm:w-56 md:w-64 mt-6 md:mt-0"
+    />
           </Nuxt-link>
           <!-- Collapse Button -->
           <div class="md:hidden">
@@ -98,7 +98,7 @@
                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
                 to="#solution"
               >
-                {{ $t("licensing") }}
+                {{ $t("solution") }}
               </Nuxt-link>
               <Nuxt-link
                 class="p-2 flex items-center text-sm text-white hover:text-yellow-400 focus:outline-none focus:text-yellow-400"

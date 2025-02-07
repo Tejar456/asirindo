@@ -18,8 +18,8 @@ Untuk mengganti isi teks di kode Vue.js Anda dengan menggunakan variabel interna
             data-aos="fade-up"
           ></div>
           <p
-            class="text-base md:text-lg text-slate-600 max-w-xl mx-auto"
-            data-aos="fade-up"
+            class="text-base md:text-md text-slate-600 max-w-xl mx-auto"
+            data-aos="fade-up" 
           >
             {{ $t("desk") }}
           </p>
@@ -42,7 +42,7 @@ Untuk mengganti isi teks di kode Vue.js Anda dengan menggunakan variabel interna
                 </p>
               </div>
               <div class="w-full p-4 mx-2 md:mx-4">
-                <p class="text-md text-center tracking-wide text-slate-800">
+                <p class="text-sm text-center tracking-wide text-slate-800">
                   {{ $t("descard1") }}
                 </p>
               </div>
@@ -66,7 +66,7 @@ Untuk mengganti isi teks di kode Vue.js Anda dengan menggunakan variabel interna
                 </p>
               </div>
               <div class="w-full p-4 mx-2 md:mx-4">
-                <p class="text-md text-center tracking-wide text-slate-800">
+                <p class="text-sm text-center tracking-wide text-slate-800">
                   {{ $t("descard2") }}
                 </p>
               </div>
@@ -90,7 +90,7 @@ Untuk mengganti isi teks di kode Vue.js Anda dengan menggunakan variabel interna
                 </p>
               </div>
               <div class="w-full p-4 mx-2 md:mx-4">
-                <p class="text-md text-center tracking-wide text-slate-800">
+                <p class="text-sm text-center tracking-wide text-slate-800">
                   {{ $t("descard3") }}
                 </p>
               </div>
@@ -110,7 +110,7 @@ Untuk mengganti isi teks di kode Vue.js Anda dengan menggunakan variabel interna
                 </p>
               </ div>
               <div class="w-full p-4 mx-2 md:mx-4">
-                <p class="text-md text-center tracking-wide text-slate-800">
+                <p class="text-sm text-center tracking-wide text-slate-800">
                   {{ $t("descard4") }}
                 </p>
               </div>
