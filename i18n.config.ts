@@ -28,10 +28,10 @@ export default defineI18nConfig(() => ({
         "ASIRINDO telah melisensikan ribuan lagu Indonesia untuk digunakan secara legal di restoran, kafe, hotel, karaoke, siaran, dan bisnis lainnya, sehingga Anda tidak perlu khawatir.",
       // about
       title: "Tentang Asirindo",
-      desk: "ASIRINDO adalah pusat musik pertama dan satu-satunya di Indonesia. Kami telah melisensikan ribuan lagu dari ratusan produser dan label sehingga Anda tidak perlu melakukannya. Musik membantu melibatkan pelanggan dengan produk dan layanan Anda. Kami di sini untuk membantu Anda mencapai itu.",
+     desk: "ASIRINDO merupakan pusat musik legal pertama dan satu-satunya di Indonesia. Kami telah melisensikan ribuan lagu dari ratusan produser dan label untuk Hak Reproduksi / Sulih Suara, bukan Pertunjukan Publik.",
       card1: "Konten 100% Legal",
       descard1:
-        "Kami melisensikan musik dari pemilik hak. Kami membantu Anda menjawab tantangan untuk menjadi 100% legal.",
+        "Kami Hanya Melisensikan Konten Legal",
       card2: "Dukungan Profesional",
       descard2:
         "Tim kami adalah para profesional paling berpengalaman di bidang lisensi musik dan siap mendukung semua klien kami.",
@@ -40,7 +40,7 @@ export default defineI18nConfig(() => ({
         "Kami memiliki katalog musik Indonesia yang paling lengkap yang siap digunakan untuk membantu Anda meningkatkan penawaran bisnis Anda.",
       card4: "Satu Sumber untuk Semua",
       descard4:
-        "Anda hanya perlu berurusan dengan ASIRINDO untuk menjadi 100% legal, mendapatkan dukungan profesional, dan katalog musik Indonesia yang paling lengkap.",
+        "Hanya Berisi Bahasa Indonesia",
         // solution
         solutionTitle: "Solusi Kami",
         solutionSubtitle: "Satu aplikasi untuk mengatur semuanya",
@@ -100,10 +100,10 @@ export default defineI18nConfig(() => ({
       talkmore: "Learn More",
       // about
       title: "About Asirindo",
-      desk: "ASIRINDO is the first and the only music hub in Indonesia. We've licensed thousands of songs from hundreds of producers and labels so you don't have to. Music helps engage customers with your products and services. We're here to help you achieve that.",
+     desk: "ASIRINDO is the first and only legal music hub in Indonesia. We’ve licensed thousands of songs from hundreds of producers and labels for Reproduction / Dubbing Rights, not Public Performance.",
       card1: "100% Legal Content",
       descard1:
-        "We license music from rights owner. We help you answer the challenge to go 100% legal.",
+        "We License Legal Contents Only",
       card2: "Professional Support",
       descard2:
         "Our team is the most experienced professionals in the music licensing field and ready to support all our clients.",
@@ -112,7 +112,7 @@ export default defineI18nConfig(() => ({
         "We have the most complete Indonesian music catalog that is ready to use to help you enhance your business offers.",
       card4: "One Resource for All",
       descard4:
-        "You only need to deal with ASIRINDO to go 100% legal, get professional support and the most complete Indonesian music catalog.",
+        "Indonesian Contents Only",
       //   solution
       solutionTitle: "Our Solution",
       solutionSubtitle: "One app to rule them all",
