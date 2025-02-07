@@ -4,7 +4,7 @@ Untuk mengganti isi teks di kode Vue.js Anda dengan menggunakan variabel interna
 <template>
   <section id="about">
     <div class="bg-slate-200 py-10" ref="statsSection">
-      <div class="container mx-auto px-4">
+      <div class="mx-auto px-4">
         <!-- Header Section -->
         <header class="text-center">
           <h1

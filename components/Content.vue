@@ -69,7 +69,7 @@ onUnmounted(() => {
 <template>
   <section id="content">
     <div class="bg-slate-200 py-16" ref="statsSection">
-      <div class="container mx-auto px-4">
+      <div class="mx-auto px-4">
         <!-- Header Section -->
         <header class="text-center mb-16">
           <h1 class="text-2xl md:text-4xl font-semibold text-slate-800" data-aos="fade-up">

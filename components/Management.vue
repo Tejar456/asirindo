@@ -1,8 +1,8 @@
 <template>
-  <section id="management">
-    <div class="h-full flex items-center md:h-[90vh]">
+  <section id="management items-center md:h-[90vh] ">
+    <div class="h-full flex ">
       <div class="mx-auto px-4">
-        <h1 class="text-center text-2xl md:text-4xl font-semibold" data-aos="fade-up">
+        <h1 class="text-center text-2xl md:text-4xl md:pt-2 font-semibold" data-aos="fade-up">
           {{ $t("titlemanagement") }}
         </h1>
         <div class="mx-auto h-1 w-20 md:w-28 bg-yellow-400 rounded mb-3 md:mb-4 mt-3 md:mt-4" data-aos="fade-up"></div>
