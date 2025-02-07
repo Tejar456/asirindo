@@ -21,7 +21,7 @@
         class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-20 pt-10"
       >
         <div class="col-span-1 mb-5 md:mb-3">
-          <img
+          <img data-aos="fade-up"
             class="h-96 rounded-lg object-cover"
             src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fG11c2ljfGVufDB8fDB8fHww"
             alt=""
@@ -29,7 +29,7 @@
         </div>
         <div class="col-span-1">
           <!-- Card -->
-          <div
+          <div data-aos="fade-up" 
             class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4"
           >
             <div class="flex items-center overflow-hidden">
@@ -40,7 +40,7 @@
               </div>
             </div>
           </div>
-          <div
+          <div data-aos="fade-up"
             class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4"
           >
             <div class="flex items-center overflow-hidden">
@@ -56,7 +56,7 @@
               </div>
             </div>
           </div>
-          <div
+          <div data-aos="fade-up"
             class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4"
           >
             <div class="flex items-center overflow-hidden">
