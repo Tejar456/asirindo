@@ -60,8 +60,10 @@ export default defineI18nConfig(() => ({
       titlemanagement: "Manajemen",
       deskmanagement:
         "ASIRINDO dijaga dengan aman oleh eksekutif musik dengan pengalaman puluhan tahun di bidang lisensi musik.",
-      director: "Direktur",
-      financial: "Keuangan",
+      director: "Direktur Utama",
+      financial: "Financial Controller",
+      direktur: "Dikretur",
+      komisaris: "Komisaris",
       // contact
       titlecontact: "Hubungi Kami",
       submit: "Kirim",
@@ -131,8 +133,10 @@ export default defineI18nConfig(() => ({
       titlemanagement: "Management",
       deskmanagement:
         "ASIRINDO is safely guarded by music executives with decades of experiences in music licensing.",
-      director: "Director",
-      financial: "Financial",
+      director: "Managing Director",
+      financial: "Finance Controller",
+      direktur: "Director",
+      komisaris: "Commissary",
       // contact
       titlecontact: "Contact Us",
       submit: "Submit",

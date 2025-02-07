@@ -1,8 +1,3 @@
-Berikut adalah kode Vue.js yang telah dimodifikasi untuk menggunakan variabel internasionalisasi (i18n) pada bagian teks yang relevan. Saya akan mengganti teks statis dengan referensi ke variabel yang sesuai, seperti `titlemanagement`, `deskmanagement`, `director`, dan `financial`.
-
-### Kode Vue.js yang Dimodifikasi
-
-```vue
 <template>
   <section id="management">
     <div class="h-full flex items-center md:h-[90vh]">
@@ -23,7 +18,7 @@ Berikut adalah kode Vue.js yang telah dimodifikasi untuk menggunakan variabel in
                 class="rounded-full border border-slate-500 shadow-lg w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto"
                 src="assets/img/Jusak.jpg" alt="Jusak" />
               <div class="mt-2 sm:mt-4">
-                <h3 class="font-medium text-lg sm:text-xl text-gray-800">Jusak Setiono</h3>
+                <h3 class="font-medium text-lg sm:text-xl text-gray-800">Jusak Irwan Sutiono </h3>
                 <p class="text-sm sm:text-md text-gray-600">{{ $t("director") }}</p>
               </div>
             </div>
@@ -31,7 +26,7 @@ Berikut adalah kode Vue.js yang telah dimodifikasi untuk menggunakan variabel in
             <div class="text-center" data-aos="flip-right" duration="3000">
               <img
                 class="rounded-full border border-slate-500 shadow-lg w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto"
-                src="assets/img/salfitri.jpg" alt="Salfitri" />
+                src="assets/img/Portrait_Placeholder.png" alt="Salfitri" />
               <div class="mt-2 sm:mt-4">
                 <h3 class="font-medium text-lg sm:text-xl text-gray-800">Salfitri Tri Dasa Yunita</h3>
                 <p class="text-sm sm:text-md text-gray-600">{{ $t("financial") }}</p>
@@ -41,20 +36,20 @@ Berikut adalah kode Vue.js yang telah dimodifikasi untuk menggunakan variabel in
             <div class="text-center" data-aos="flip-right" duration="3000">
               <img
                 class="rounded-full border border-slate-500 shadow-lg w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto"
-                src="https://pagedone.io/asset/uploads/1696238396.png" alt="Patricia" />
+                src="assets/img/Portrait_Placeholder.png" alt="Patricia" />
               <div class="mt-2 sm:mt-4">
-                <h3 class="font-medium text-lg sm:text-xl text-gray-800">Patricia Angely</h3>
-                <p class="text-sm sm:text-md text-gray-600">Co-Founder</p>
+                <h3 class="font-medium text-lg sm:text-xl text-gray-800">William</h3>
+                <p class="text-sm sm:text-md text-gray-600">{{ $t("direktur") }}</p>
               </div>
             </div>
 
             <div class="text-center" data-aos="flip-right" duration="3000">
               <img
                 class="rounded-full border border-slate-500 shadow-lg w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto"
-                src="https://pagedone.io/asset/uploads/1696238425.png" alt="Yasmine" />
+                src="assets/img/Portrait_Placeholder.png" alt="Yasmine" />
               <div class="mt-2 sm:mt-4">
-                <h3 class="font-medium text-lg sm:text-xl text-gray-800">Yasmine Tano</h3>
-                <p class="text-sm sm:text-md text-gray-600">Product Manager</p>
+                <h3 class="font-medium text-lg sm:text-xl text-gray-800">Yonathan</h3>
+                <p class="text-sm sm:text-md text-gray-600">{{ $t("komisaris") }}</p>
               </div>
             </div>
 
