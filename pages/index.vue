@@ -23,7 +23,7 @@ useHead({
       name: "description",
       content: "ASIRINDO is the first and the only music hub in Indonesia. We've licensed thousands of songs from hundreds of producers and labels so you don't have to. Music ...",
     },
-    { name: "google-site-verification", content: "4Iq2w8lKdPpgaV2TLWgiUBvXDxfeNapBjYB8STyBDsE" },
+    { name: "google-site-verification", content: "clDJO1AuKnH4_Q8la-vywE3mYAlTG6jNxWcSRacDuSE" },
     { name: "keywords", content: "music licensed " },
     { property: "og:site_name", content: "ASIRINDO" },
     { property: "og:title", content: "ASIRINDO - ASIRINDO is the first and the only music hub in Indonesia. We've licensed thousands of songs from hundreds of producers and labels so you don't have to. Music ..." },
