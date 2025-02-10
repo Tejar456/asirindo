@@ -74,7 +74,10 @@ export default defineI18nConfig(() => ({
       // news
       titlenews: "Berita",
       read: "Baca Selengkapnya",
-      readnews: "Baca Berita"
+      readnews: "Baca Berita",
+      //footer
+      sosmed: "Sosial Media",
+      our:"Kontak Kami",
     },
     en: {
       // navbar
@@ -149,7 +152,10 @@ export default defineI18nConfig(() => ({
       // news
       titlenews: "News",
       read: "Read More",
-      readnews: "Read News"
+      readnews: "Read News",
+      //footer
+      sosmed: "Social Media",
+      our: "Our Contact",
     },
   },
 }));
