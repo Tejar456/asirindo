@@ -18,7 +18,7 @@
     <img
       src="assets/img/logo.png"
       alt="logo"
-      class="w-48 sm:w-56 md:w-64 mt-6 md:mt-0"
+      class="w-44 md:w-64 mt-1 md:mt-0"
     />
           </Nuxt-link>
           <!-- Collapse Button -->
