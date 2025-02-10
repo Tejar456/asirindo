@@ -1,5 +1,5 @@
 <template>
-  <section id="solution">
+  <section id="lisencing">
     <!-- Solution -->
     <div
       class="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-20 mx-auto h-full md:h-[90vh] mb-10"

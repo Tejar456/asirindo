@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   modules: [
-    '@nuxtjs/i18n',
+    '@nuxtjs/i18n','@nuxtjs/seo'
   ],
   i18n: {
     locales: ['en', 'id'],
