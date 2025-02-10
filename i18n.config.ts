@@ -41,7 +41,7 @@ export default defineI18nConfig(() => ({
       card4: "Satu Sumber untuk Semua",
       descard4:
         "Hanya Berisi Bahasa Indonesia",
-              //   lisencing
+              //   lisensi
       licensingtitle: "Jenis Lisensi",
       feature1:
         "Menyediakan untuk Pertunjukan Publik",
@@ -74,10 +74,7 @@ export default defineI18nConfig(() => ({
       // news
       titlenews: "Berita",
       read: "Baca Selengkapnya",
-      readnews: "Baca Berita",
-      //footer
-      sosmed: "Sosial Media",
-      our:"Kontak Kami",
+      readnews: "Baca Berita"
     },
     en: {
       // navbar
@@ -152,10 +149,7 @@ export default defineI18nConfig(() => ({
       // news
       titlenews: "News",
       read: "Read More",
-      readnews: "Read News",
-      //footer
-      sosmed: "Social Media",
-      our: "Our Contact",
+      readnews: "Read News"
     },
   },
 }));
