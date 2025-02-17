@@ -7,10 +7,12 @@
         </h1>
         <div class="mx-auto h-1 w-20 md:w-28 bg-yellow-400 rounded mb-3 md:mb-4 mt-3 md:mt-4" data-aos="fade-up"></div>
         <h2 class="text-center text-base md:text-lg mt-6 max-w-xl mx-auto" data-aos="fade-up">
-          Jl. Raya Pasar Minggu No. 16 A – 16 B Rt. 008 Rw. 09 <br />
-          Kelurahan Pancoran, Kecamatan Pancoran <br />
-          Jakarta Selatan, 12780<br />
-          Ph: 021–26963025
+          Jl. Raya Pasar Minggu No.16 A – B RT.008 RW 09
+Kelurahan Pasar Minggu, Kecamatan Pancoran
+ <br />
+ Jakarta Selatan 12780 - Indonesia <br />
+          Tlp: (+62) 21 - 26963025
+
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16 mt-10">

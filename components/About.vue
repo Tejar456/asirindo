@@ -1,6 +1,4 @@
-Untuk mengganti isi teks di kode Vue.js Anda dengan menggunakan variabel internasionalisasi (i18n), Anda perlu mengganti teks statis dengan referensi ke variabel yang sesuai. Berikut adalah contoh bagaimana Anda dapat melakukannya:
 
-```vue
 <template>
   <section id="about">
     <div class="bg-slate-200 py-10" ref="statsSection">
@@ -16,7 +14,7 @@ Untuk mengganti isi teks di kode Vue.js Anda dengan menggunakan variabel interna
           <div
             class="mx-auto h-1 w-20 md:w-28 bg-yellow-400 rounded my-4"
             data-aos="fade-up"
-          ></div>
+          ></div> 
           <p
             class="text-base md:text-md text-slate-600 max-w-xl mx-auto"
             data-aos="fade-up" 

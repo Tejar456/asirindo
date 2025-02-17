@@ -28,18 +28,8 @@
           />
         </div>
         <div class="col-span-1">
+         
           <!-- Card -->
-          <div data-aos="fade-up" 
-            class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4"
-          >
-            <div class="flex items-center overflow-hidden">
-              <div class="min-h-24 w-full flex justify-center items-center">
-                <h3 class="font-semibold text-center text-lg text-gray-800">
-                  {{ $t("feature1") }}
-                </h3>
-              </div>
-            </div>
-          </div>
           <div data-aos="fade-up"
             class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4"
           >
@@ -51,11 +41,16 @@
                   </h3>
                   <p class="mt-1 text-sm text-gray-700">
                     {{ $t("feature2content") }}
-                  </p>
+                  </p>   
+                  <p class="mt-1 text-sm text-gray-700">
+                    {{ $t("feature2exm") }}
+                  </p>               
                 </div>
               </div>
             </div>
           </div>
+
+
           <div data-aos="fade-up"
             class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4"
           >
@@ -67,11 +62,30 @@
                   </h3>
                   <p class="mt-1 text-sm text-gray-700">
                     {{ $t("feature3content") }}
-                  </p>                  
+                  </p>
+                  <p class="mt-1 text-sm text-gray-700">
+                    {{ $t("feature3exm") }}
+                  </p> 
                 </div>
               </div>
             </div>
           </div>
+ <!-- card -->
+ <div data-aos="fade-up"
+            class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4"
+          >
+            <div class="flex items-center overflow-hidden">
+              <div class="grow p-4">
+                <div class="min-h-24 flex flex-col justify-center">
+                  <h3 class="font-semibold text-md text-gray-800 text-center">
+                    {{ $t("feature1") }}
+                  </h3>
+                                   
+                </div>
+              </div>
+            </div>
+          </div>
+         
         </div>
       </div>
     </div>
