@@ -27,31 +27,33 @@ export default defineI18nConfig(() => ({
       talk1:
         "ASIRINDO telah melisensikan ribuan lagu Indonesia untuk digunakan secara legal di restoran, kafe, hotel, karaoke, siaran, dan bisnis lainnya, sehingga Anda tidak perlu khawatir.",
       // about
-      title: "Tentang Asirindo",
-     desk: "ASIRINDO merupakan pusat musik legal pertama dan satu-satunya di Indonesia. Kami telah melisensikan ribuan lagu dari ratusan produser dan label untuk Hak Reproduksi / Sulih Suara, bukan Pertunjukan Publik.",
+      title: "Tentang Kami",
+     desk: "ASIRINDO merupakan pusat musik legal pertama dan satu-satunya di Indonesia. Kami telah melisensikan ribuan lagu dari ratusan produser dan label untuk Hak Reproduksi /Dubbing , dan bukan Public Performing.",
       card1: "Konten 100% Legal",
       descard1:
         "Kami Hanya Melisensikan Konten Legal",
       card2: "Dukungan Profesional",
       descard2:
         "Tim kami adalah para profesional paling berpengalaman di bidang lisensi musik dan siap mendukung semua klien kami.",
-      card3: "Katalog Kaya",
+      card3: "Katalog",
       descard3:
         "Kami memiliki katalog musik Indonesia yang paling lengkap yang siap digunakan untuk membantu Anda meningkatkan penawaran bisnis Anda.",
       card4: "Satu Sumber untuk Semua",
       descard4:
-        "Hanya Berisi Bahasa Indonesia",
+        "Hanya Berisi Konten Indonesia",
               //   lisensi
       licensingtitle: "Jenis Lisensi",
       feature1:
-        "Menyediakan untuk Pertunjukan Publik",
+        "Menyediakan Public Performing",
       feature2:
         "Reproduksi",
       feature2content:
-        "Hak untuk reproduksi umum. Contoh: penjualan fisik atau distribusi di platform digital.",
-      feature3: "Sulih Suara",
+        "Hak untuk reproduksi umum. ",
+        feature2exm:"Contoh: penjualan fisik atau distribusi di platform digital.",
+        feature3: "Dubbing",
+        feature3exm:"Contoh: musik latar di kafe, hotel, restoran, dll., penyediaan konten di karaoke.",
       feature3content:
-        "Hak untuk mereproduksi rekaman master tetapi terbatas untuk tujuan pertunjukan publik. Contoh: musik latar di kafe, hotel, restoran, dll., penyediaan konten di karaoke.",
+        "Hak untuk mereproduksi rekaman master tetapi terbatas untuk tujuan pertunjukan publik. ",
       // contet
       titlecontent: "Aset Konten Kami",
       desksolution:
@@ -63,7 +65,7 @@ export default defineI18nConfig(() => ({
       // management
       titlemanagement: "Manajemen",
       deskmanagement:
-        "ASIRINDO dijaga dengan aman oleh eksekutif musik dengan pengalaman puluhan tahun di bidang lisensi musik.",
+        " ASIRINDO dikelola oleh para profesional berpengalaman di bidang lisensi musik.",
       director: "Direktur Utama",
       financial: "Financial Controller",
       direktur: "Dikretur",
@@ -81,7 +83,7 @@ export default defineI18nConfig(() => ({
     en: {
       // navbar
       home: "Home",
-      about: "About",
+      about: "About Us ",
       lisencing: "Licensing",
       content: "Content",
       management: "Management",
@@ -99,37 +101,39 @@ export default defineI18nConfig(() => ({
       text: "ASIRINDO is a one stop music licensing solution for business customers in Indonesia.",
       contactus: "Contact Us",
       more: "Learn More",
-      talk: "Need music license? Talk to us!",
+      talk: "Need music license? Contact us!",
       talk1:
         "ASIRINDO had licensed thousands of Indonesian songs to use legally in restaurants, cafes, hotels, karaoke, broadcasts and any other businesses, so you don't have to",
       talkcontact: "Contact Us",
       talkmore: "Learn More",
       // about
-      title: "About Asirindo",
-     desk: "ASIRINDO is the first and only legal music hub in Indonesia. We’ve licensed thousands of songs from hundreds of producers and labels for Reproduction / Dubbing Rights, not Public Performance.",
+      title: "About Us",
+     desk: "ASIRINDO is the first and only legal music hub in Indonesia. We’ve licensed thousands of songs from hundreds of producers and labels for Reproduction / Dubbing, and not Public Performing.",
       card1: "100% Legal Content",
       descard1:
         "We License Legal Contents Only",
       card2: "Professional Support",
       descard2:
         "Our team is the most experienced professionals in the music licensing field and ready to support all our clients.",
-      card3: "Rich Catalog",
+      card3: "Catalog",
       descard3:
         "We have the most complete Indonesian music catalog that is ready to use to help you enhance your business offers.",
       card4: "One Resource for All",
       descard4:
-        "Indonesian Contents Only",
+        "Indonesian Content Only",
       //   lisencing
-      licensingtitle: "Type Of Lisencing",
+      licensingtitle: "Type Of Licensing",
       feature1:
         "Making Available for Public Performing",
       feature2:
         "Reproductions",
       feature2content:
-        "The right to general reproduction. Example: physical sale or distribution on digital platforms.",
-      feature3: "Dubbing",
+        "The right of reproduction in general.",
+      feature2exm:"Example: physical sale or distribution on digital platforms.",
+        feature3: "Dubbing",
+      feature3exm:"Example: background music in cafes, hotels, restaurants etc., provision of content in karaoke.",
       feature3content:
-        "The right to reproduce master recordings but limited to public performing purposes. Example: background music in cafes, hotels, restaurants etc., provision of content in karaoke.",
+        "The right to reproduce master recordings but limited to public performing purposes.",
       // content
       titlecontent: "Our Content Assets",
       desksolution: "Everything we have are legally licensed and ready to use.",
@@ -140,7 +144,7 @@ export default defineI18nConfig(() => ({
       // management
       titlemanagement: "Management",
       deskmanagement:
-        "ASIRINDO is safely guarded by music executives with decades of experiences in music licensing.",
+        "ASIRINDO is managed by experienced professionals in the music licensing field.",
       director: "Managing Director",
       financial: "Finance Controller",
       direktur: "Director",
