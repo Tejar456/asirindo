@@ -29,14 +29,18 @@
 
 
                         <!-- Twitter -->
+                        <!-- X -->
                         <a href="https://x.com/asirindo" target="_blank"
-                            class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+                                viewBox="0 0 30 30" class="fill-current">
                                 <path
-                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                    d="M26.37,26l-8.795-12.822l0.015,0.012L25.52,4h-2.65l-6.46,7.48L11.28,4H4.33l8.211,11.971L12.54,15.97L3.88,26h2.65 l7.182-8.322L19.42,26H26.37z M10.23,6l12.34,18h-2.1L8.12,6H10.23z">
+                                </path>
                             </svg>
-                            <span>Twitter</span>
+                            <span class="text-lg">X</span>
                         </a>
+
                     </div>
                 </div>
 
@@ -46,18 +50,18 @@
                     <h2 class="text-xl font-bold mb-4"> {{ $t("our") }}</h2>
                     <div class="flex flex-col space-y-4">
                         <!-- Phone -->
-                        <a href="tel:021-26963025"
+                        <a href="tel:(+62)21 -26963025" target="_blank"
                             class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
                             </svg>
-                            <span>021-26963025</span>
+                            <span>(+62)21 -26963025</span>
                         </a>
 
 
                         <!-- Email -->
-                        <a href="mailto:asirindo@gmail.com"
+                        <a href="mailto:info@asirindo.org" target="_blank"
                             class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path
@@ -69,12 +73,16 @@
 
 
                         <!-- Location -->
-                        <a href="#" class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <a href="https://maps.app.goo.gl/CYScWLUu94ga8CZL7" target="_blank"
+                            class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition">
+                            <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                             </svg>
-                            <span>Jl. Raya Pasar Minggu No. 16 A – 16 B</span>
+                            <span>Jl. Raya Pasar Minggu No.16 A – B RT.008 RW 09
+                                Kelurahan Pasar Minggu, Kecamatan Pancoran
+                                Jakarta Selatan 12780 - Indonesia
+                            </span>
                         </a>
                     </div>
                 </div>
