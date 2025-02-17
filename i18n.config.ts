@@ -4,17 +4,17 @@ export default defineI18nConfig(() => ({
     id: {
       // navbar
       home: "Beranda",
-      about: "Tentang",
+      about: "Tentang Kami",
       lisencing: "Lisensi",
       content: "Konten",
       contact: "Kontak",
-      management: "Pengelola",
+      management: "Manajemen",
       catalog: "Katalog",
       news: "Berita",
       // hero
-      text1: "Musik adalah alat yang efektif untuk melibatkan pelanggan Anda",
+      text1: "Musik adalah alat yang efektif untuk membangun koneksi dengan pelanggan Anda",
       text2: "Anda membutuhkan musik di restoran, karaoke, dan hotel Anda",
-      text3: "Musik adalah bagian integral dalam bisnis perhotelan",
+      text3: "Musik adalah elemen penting dalam industri layanan",
       text4: "Bisnis penyiaran perlu memiliki produk yang legal",
       text5:
         "Dukung musik Indonesia dengan lagu-lagu yang terlisensi secara legal",
@@ -23,7 +23,7 @@ export default defineI18nConfig(() => ({
       text: "ASIRINDO adalah solusi lisensi musik satu atap untuk pelanggan bisnis di Indonesia.",
       contactus: "Hubungi Kami",
       more: "Pelajari Lebih Lanjut",
-      talk: "Butuh lisensi musik? Bicaralah kepada kami!",
+      talk: "Butuh lisensi musik? Hubungi kami!",
       talk1:
         "ASIRINDO telah melisensikan ribuan lagu Indonesia untuk digunakan secara legal di restoran, kafe, hotel, karaoke, siaran, dan bisnis lainnya, sehingga Anda tidak perlu khawatir.",
       // about
@@ -82,16 +82,16 @@ export default defineI18nConfig(() => ({
       // navbar
       home: "Home",
       about: "About",
-      lisencing: "Lisencing",
+      lisencing: "Licensing",
       content: "Content",
       management: "Management",
       catalog: "Catalog",
       contact: "Contact",
       news: "News",
       // hero
-      text1: "Music is an effective tool to engage your customers",
+      text1: "Music is an effective tool to build a connection with your customers",
       text2: "You need music in your restaurants karaoke and hotels",
-      text3: "Music is an integral part in hospitality business",
+      text3: "Music is an important element in the service industry",
       text4: "Broadcasting businesses need to have legal products",
       text5: "Support Indonesian music with legally licensed songs",
       previous: "Previous",
