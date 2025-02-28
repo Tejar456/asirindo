@@ -82,7 +82,7 @@
     <div class="flex items-center overflow-hidden">
       <div class="grow p-4">
         <div class="min-h-20 flex flex-col justify-center">
-          <h3 class="font-semibold text-base text-gray-800 text-center">
+          <h3 class="font-semibold text-base text-gray-800">
             {{ $t("feature1") }}
           </h3>
         </div>
