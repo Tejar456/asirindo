@@ -7,10 +7,9 @@
         </h1>
         <div class="mx-auto h-1 w-20 md:w-28 bg-yellow-400 rounded mb-3 md:mb-4 mt-3 md:mt-4" data-aos="fade-up"></div>
         <h2 class="text-center text-base md:text-lg mt-6 max-w-xl mx-auto" data-aos="fade-up">
-          Jl. Raya Pasar Minggu No.16 A – B RT.008 RW 09
-Kelurahan Pasar Minggu, Kecamatan Pancoran
- <br />
- Jakarta Selatan 12780 - Indonesia <br />
+          Jl. Raya Pasar Minggu No.16 A – B RT.008 RW 09 <br />
+          Kelurahan Pasar Minggu, Kecamatan Pancoran <br />
+          Jakarta Selatan 12780 - Indonesia <br />
           Tlp: (+62) 21 - 26963025
 
         </h2>
@@ -35,7 +34,7 @@ Kelurahan Pasar Minggu, Kecamatan Pancoran
                 <div class="relative">
                   <input type="email" id="hs-tac-input-email"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
-                    placeholder="Email" name="Email"/>
+                    placeholder="Email" name="Email" />
                   <label for="hs-tac-input-email"
                     class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none peer-focus:text-xs peer-focus:-translate-y-1.5 peer-focus:text-neutral-400 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:text-neutral-400">
                     Email
@@ -46,7 +45,7 @@ Kelurahan Pasar Minggu, Kecamatan Pancoran
                 <div class="relative">
                   <input type="text" id="hs-tac-input-subject"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
-                    placeholder="Subject" name="Subject"/>
+                    placeholder="Subject" name="Subject" />
                   <label for="hs-tac-input-subject"
                     class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none peer-focus:text-xs peer-focus:-translate-y-1.5 peer-focus:text-neutral-400 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:text-neutral-400">
                     Subject
