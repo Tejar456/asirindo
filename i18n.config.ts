@@ -34,7 +34,7 @@ export default defineI18nConfig(() => ({
         "Kami Hanya Melisensikan Konten Legal",
       card2: "Dukungan Profesional",
       descard2:
-        "Tim kami adalah para profesional paling berpengalaman di bidang lisensi musik dan siap mendukung semua klien kami.",
+        "Tim kami adalah para profesional berpengalaman di bidang lisensi musik dan siap mendukung semua klien kami.",
       card3: "Katalog",
       descard3:
         "Kami memiliki katalog musik Indonesia yang paling lengkap yang siap digunakan untuk membantu Anda meningkatkan penawaran bisnis Anda.",
@@ -114,7 +114,7 @@ export default defineI18nConfig(() => ({
         "We License Legal Contents Only",
       card2: "Professional Support",
       descard2:
-        "Our team is the most experienced professionals in the music licensing field and ready to support all our clients.",
+        "Our team are experienced professionals in the field of music licensing and are ready to support all our clients.",
       card3: "Catalog",
       descard3:
         "We have the most complete Indonesian music catalog that is ready to use to help you enhance your business offers.",
