@@ -46,7 +46,7 @@ export default defineI18nConfig(() => ({
       feature1:
         "Hak Penyediaan Untuk Komunikasi Kepada Publik.",
       feature1content:"Adalah hak penyediaan karya rekam untuk digunakan oleh publik agar dapat dipilih (on demand service).",
-      feature1exm:"Contoh : spotify, youtube, tiktok dsb.",
+      feature1exm:"Contoh : Spotify, Youtube, Tiktok dsb.",
       feature2:
         "Hak Reproduksi",
       feature2content:
@@ -128,12 +128,12 @@ export default defineI18nConfig(() => ({
              feature1:
                "Making Available Rights For Communication to Public",
              feature1content:"Making Available Rights is the right to authorize the making available to the public, by wire or wireless means, of any performance fixed in a phonogram, is such a way that members of the public may access the fixed performance from a place and at a time individually chosen by them. This right covers, in particular, on-demand, interactive making available through the internet.",
-             feature1exm:"Example : spotify, youtube, tiktok, etc.",
+             feature1exm:"Example : Spotify, Youtube, Tiktok, etc.",
              feature2:
                "Reproductions Rights",
              feature2content:
                "Reproduction Rights is the right to authorize direct or indirect reproduction of the phonogram in any manner or form, both physically and digitally.",
-               feature2exm:"Example : Production and physical copies sales (e.g CDs, DVDs) and  dan penjualan salinan fisik (misalnya, CD, atau DVD), as well as distribution through digital platforms.",
+               feature2exm:"Example : Production and physical copies sales (e.g CDs, DVDs) as well as distribution through digital platforms.",
                feature3: "Dubbing Rights",
                feature3content:"Dubbing is the right to copy, reproduce and make available recorded works, especially for commercial purposes such as background music services.",
                feature3exm:"Example : background music in cafes, hotels, restaurants etc., provision of content in karaoke.",
