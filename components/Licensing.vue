@@ -48,10 +48,10 @@
                     {{ $t("feature3") }}
                   </h3>
                   <p class="mt-2 text-sm text-gray-700">
-                    {{ $t("feature3exm") }}
+                    {{ $t("feature3content") }}
                   </p>
                   <p class="mt-2 text-sm text-gray-700">
-                    {{ $t("feature3ex") }}
+                    {{ $t("feature3exm") }}
                   </p>
                 </div>
               </div>
@@ -67,6 +67,12 @@
                   <h3 class="font-semibold text-base text-gray-800">
                     {{ $t("feature1") }}
                   </h3>
+                  <p class="mt-2 text-sm text-gray-700">
+                    {{ $t("feature1content") }}
+                  </p>
+                  <p class="mt-2 text-sm text-gray-700">
+                    {{ $t("feature1exm") }}
+                  </p>
                 </div>
               </div>
             </div>

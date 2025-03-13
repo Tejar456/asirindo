@@ -44,15 +44,17 @@ export default defineI18nConfig(() => ({
               //   lisensi
       licensingtitle: "Jenis Lisensi",
       feature1:
-        "Hak penyediaan atas fonogram, baik melalui kabel maupun tanpa kabel, yang dapat diakses oleh publik dari tempat dan waktu yang mereka pilih.",
+        "Hak Penyediaan Untuk Komunikasi Kepada Publik.",
+      feature1content:"Adalah hak penyediaan karya rekam untuk digunakan oleh publik agar dapat dipilih (on demand service).",
+      feature1exm:"Contoh : spotify, youtube, tiktok dsb.",
       feature2:
-        "Reproduksi",
+        "Hak Reproduksi",
       feature2content:
         "Adalah hak untuk memperbanyak suatu karya dalam berbagai bentuk, baik secara fisik maupun digital.",
         feature2exm:"Contoh: Produksi dan penjualan salinan fisik (misalnya, CD, atau DVD) serta distribusi melalui platform digital)",
-        feature3: "Dubbing Rights",
-        feature3exm:"Adalah Hak untuk memperbanyak master rekaman tapi terbatas hanya untuk keperluan public performing.",
-        feature3ex:"Contoh : background music di café, hotel, resto dll, penyediaan konten di karaoke",
+        feature3: "Hak Sulih Suara",
+        feature3content:"Adalah hak untuk menyalin , memperbanyak, dan menyediakan karya rekam, khususnya untuk tujuan komersial seperti layanan musik latar.",
+        feature3exm:"Contoh : background music di café, hotel, resto dll, penyediaan konten di karaoke",
       
       // contet
       titlecontent: "Aset Konten Kami",
@@ -123,16 +125,19 @@ export default defineI18nConfig(() => ({
         "Indonesian Content Only",
       //   lisencing
       licensingtitle: "Type Of Licensing",
-      feature1:
-        "The right to the provision of phonograms, both wired and wireless, that are accessible to the public from a place and time of their choosing.",
-      feature2:
-        "Reproductions",
-      feature2content:
-        "It is the right to reproduce a work in various forms, both physically and digitally.",
-      feature2exm:"Example: Production and sale of physical copies (e.g., CDs, or DVDs) as well as distribution through digital platforms)",
-        feature3: "Dubbing Rights",
-      feature3exm:"It is the right to reproduce master recordings but limited to public performance.",
-      feature3ex:"Example: background music in cafes, hotels, restaurants etc., content provision in karaoke",
+             feature1:
+               "Making Available Rights For Communication to Public",
+             feature1content:"Making Available Rights is the right to authorize the making available to the public, by wire or wireless means, of any performance fixed in a phonogram, is such a way that members of the public may access the fixed performance from a place and at a time individually chosen by them. This right covers, in particular, on-demand, interactive making available through the internet.",
+             feature1exm:"Example : spotify, youtube, tiktok, etc.",
+             feature2:
+               "Reproductions Rights",
+             feature2content:
+               "Reproduction Rights is the right to authorize direct or indirect reproduction of the phonogram in any manner or form, both physically and digitally.",
+               feature2exm:"Example : Production and physical copies sales (e.g CDs, DVDs) and  dan penjualan salinan fisik (misalnya, CD, atau DVD), as well as distribution through digital platforms.",
+               feature3: "Dubbing Rights",
+               feature3content:"Dubbing is the right to copy, reproduce and make available recorded works, especially for commercial purposes such as background music services.",
+               feature3exm:"Example : background music in cafes, hotels, restaurants etc., provision of content in karaoke.",
+             
       
       // content
       titlecontent: "Our Content Assets",
