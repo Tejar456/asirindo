@@ -44,16 +44,16 @@ export default defineI18nConfig(() => ({
               //   lisensi
       licensingtitle: "Jenis Lisensi",
       feature1:
-        "Menyediakan Public Performing",
+        "Hak penyediaan atas fonogram, baik melalui kabel maupun tanpa kabel, yang dapat diakses oleh publik dari tempat dan waktu yang mereka pilih.",
       feature2:
         "Reproduksi",
       feature2content:
-        "Hak untuk reproduksi umum. ",
-        feature2exm:"Contoh: penjualan fisik atau distribusi di platform digital.",
-        feature3: "Dubbing",
-        feature3exm:"Contoh: musik latar di kafe, hotel, restoran, dll., penyediaan konten di karaoke.",
-      feature3content:
-        "Hak untuk mereproduksi rekaman master tetapi terbatas untuk tujuan pertunjukan publik. ",
+        "Adalah hak untuk memperbanyak suatu karya dalam berbagai bentuk, baik secara fisik maupun digital.",
+        feature2exm:"Contoh: Produksi dan penjualan salinan fisik (misalnya, CD, atau DVD) serta distribusi melalui platform digital)",
+        feature3: "Dubbing Rights",
+        feature3exm:"Adalah Hak untuk memperbanyak master rekaman tapi terbatas hanya untuk keperluan public performing.",
+        feature3ex:"Contoh : background music di café, hotel, resto dll, penyediaan konten di karaoke",
+      
       // contet
       titlecontent: "Aset Konten Kami",
       desksolution:
@@ -124,16 +124,16 @@ export default defineI18nConfig(() => ({
       //   lisencing
       licensingtitle: "Type Of Licensing",
       feature1:
-        "Making Available for Public Performing",
+        "The right to the provision of phonograms, both wired and wireless, that are accessible to the public from a place and time of their choosing.",
       feature2:
         "Reproductions",
       feature2content:
-        "The right of reproduction in general.",
-      feature2exm:"Example: physical sale or distribution on digital platforms.",
-        feature3: "Dubbing",
-      feature3exm:"Example: background music in cafes, hotels, restaurants etc., provision of content in karaoke.",
-      feature3content:
-        "The right to reproduce master recordings but limited to public performing purposes.",
+        "It is the right to reproduce a work in various forms, both physically and digitally.",
+      feature2exm:"Example: Production and sale of physical copies (e.g., CDs, or DVDs) as well as distribution through digital platforms)",
+        feature3: "Dubbing Rights",
+      feature3exm:"It is the right to reproduce master recordings but limited to public performance.",
+      feature3ex:"Example: background music in cafes, hotels, restaurants etc., content provision in karaoke",
+      
       // content
       titlecontent: "Our Content Assets",
       desksolution: "Everything we have are legally licensed and ready to use.",
