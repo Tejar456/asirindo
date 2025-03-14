@@ -135,9 +135,8 @@ export default defineI18nConfig(() => ({
                "Reproduction Rights is the right to authorize direct or indirect reproduction of the phonogram in any manner or form, both physically and digitally.",
                feature2exm:"Example : Production and physical copies sales (e.g CDs, DVDs) as well as distribution through digital platforms.",
                feature3: "Dubbing Rights",
-               feature3content:"Dubbing is the right to copy, reproduce and make available recorded works, especially for commercial purposes such as background music services.",
+               feature3content:"Dubbing Rights is the right to copy, reproduce and make available recorded works, especially for commercial purposes such as background music services.",
                feature3exm:"Example : background music in cafes, hotels, restaurants etc., provision of content in karaoke.",
-             
       
       // content
       titlecontent: "Our Content Assets",
