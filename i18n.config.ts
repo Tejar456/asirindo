@@ -50,7 +50,7 @@ export default defineI18nConfig(() => ({
       feature2:
         "Hak Reproduksi",
       feature2content:
-        "Adalah hak untuk memperbanyak suatu karya dalam berbagai bentuk, baik secara fisik maupun digital.",
+        "Adalah hak untuk memperbanyak suatu karya rekam dalam berbagai bentuk, baik secara fisik maupun digital.",
         feature2exm:"Contoh: Produksi dan penjualan salinan fisik (misalnya, CD, atau DVD) serta distribusi melalui platform digital)",
         feature3: "Hak Sulih Suara",
         feature3content:"Adalah hak untuk menyalin , memperbanyak, dan menyediakan karya rekam, khususnya untuk tujuan komersial seperti layanan musik latar.",
