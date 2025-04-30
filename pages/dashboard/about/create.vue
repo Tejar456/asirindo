@@ -1,8 +1,6 @@
 <template>
   <div class="max-w-5xl mx-auto p-6">
-    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
-      <h2 class="text-xl font-semibold mb-6">Tambah Data Icon (Manual SVG)</h2>
-
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">      
       <form
         @submit.prevent="handleSubmit"
         @reset="handleReset"
@@ -10,13 +8,12 @@
       >        
         <div class="md:col-span-2">
           <label for="svg-icon" class="block text-sm font-medium mb-2"
-            >SVG Icon (Inline)</label
+            >Icon</label
           >
           <textarea
             id="svg-icon"
             v-model="svgContent"
-            rows="4"
-            placeholder="<svg>...</svg>"
+            rows="4"            
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           ></textarea>
         </div>

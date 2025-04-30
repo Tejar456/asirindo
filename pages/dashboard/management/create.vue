@@ -1,7 +1,6 @@
 <template>
   <div class="max-w-5xl mx-auto p-6">
-    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
-      <h2 class="text-lg font-semibold mb-4">Tambah Data</h2>
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">      
       <form
         @submit.prevent="handleSubmit"
         @reset="handleReset"

@@ -1,7 +1,6 @@
 <template>
   <div class="max-w-5xl mx-auto p-6">
-    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
-      <h2 class="text-lg font-semibold mb-4">Tambah Data Tentang</h2>
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">      
       <form
         @submit.prevent="handleSubmit"
         @reset="handleReset"
@@ -14,8 +13,7 @@
           <input
             type="text"
             id="title-id"
-            v-model="titleId"
-            placeholder="Judul dalam Bahasa Indonesia"
+            v-model="titleId"            
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           />
         </div>        
@@ -26,8 +24,7 @@
           <input
             type="text"
             id="title-en"
-            v-model="titleEn"
-            placeholder="Title in English"
+            v-model="titleEn"            
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           />
         </div>
@@ -39,8 +36,7 @@
           <textarea
             id="desc-id"
             v-model="descriptionId"
-            rows="3"
-            placeholder="Deskripsi dalam Bahasa Indonesia"
+            rows="3"            
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           ></textarea>
         </div>
@@ -52,8 +48,7 @@
           <textarea
             id="desc-en"
             v-model="descriptionEn"
-            rows="3"
-            placeholder="Description in English"
+            rows="3"            
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           ></textarea>
         </div>
