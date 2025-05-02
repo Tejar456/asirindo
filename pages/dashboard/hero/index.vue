@@ -1,12 +1,12 @@
 <template>
   <!-- Table Section -->
-  <div class="w-full  px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div class="w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
     <!-- Card -->
     <div class="flex flex-col">
       <div class="-m-1.5 overflow-x-auto">
         <div class="p-1.5 min-w-full inline-block align-middle">
           <div
-            class="bg-white  border border-gray-200 rounded-xl shadow-2xs overflow-hidden"
+            class="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden"
           >
             <!-- Header -->
             <div
@@ -95,29 +95,27 @@
               </thead>
 
               <tbody class="divide-y divide-gray-200">
-                <tr>                  
+                <tr v-for="hero in heros" :key="hero.id">
                   <td class="px-6 py-3 w-40">
                     <img
-                      src="/assets/img/hero.webp"
+                      :src="hero.image"
                       class="w-32 h-auto rounded-md"
                       alt="Hero Image"
                     />
                   </td>
-                  
+
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Musik adalah alat yang efektif untuk membangun koneksi
-                      dengan pelanggan Anda
+                      {{ hero.title_id }}
                     </p>
                   </td>
-                  
+
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ hero.title_en }}
                     </p>
                   </td>
-                  
+
                   <td class="px-6 py-1.5 text-right w-px">
                     <div
                       class="hs-dropdown [--placement:bottom-right] relative inline-block"
@@ -246,5 +244,25 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
+  middleware: "auth",
+});
+
+const supabase = useSupabaseClient();
+const heros = ref([]);
+
+const getHero = async () => {
+  const { data, error } = await supabase
+    .from("hero")
+    .select("*")
+    .order("id", { ascending: false });
+  if (error) {
+    console.error("Error fetching hero data:", error);
+  } else {
+    heros.value = data;
+  }
+};
+
+onMounted(() => {
+  getHero();
 });
 </script>

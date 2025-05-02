@@ -104,33 +104,24 @@
               </thead>
 
               <tbody class="divide-y divide-gray-200">
-                <tr>
-                  <td class="px-6 py-3 w-40">
-                    <img
-                      src="/assets/img/hero.webp"
-                      class="w-32 h-auto rounded-md"
-                      alt="Hero Image"
-                    />
-                  </td>
+                <tr v-for="content in contents" :key="content.id">
+                  <td class="px-6 py-3 w-40" v-html="content.icon"></td>
 
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Musik adalah alat yang efektif untuk membangun koneksi
-                      dengan pelanggan Anda
+                      {{ content.title_id }}
                     </p>
                   </td>
 
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ content.title_en }}
                     </p>
                   </td>
 
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ content.amount }}
                     </p>
                   </td>
 
@@ -262,5 +253,25 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
+  middleware: "auth",
+});
+
+const supabase = useSupabaseClient();
+const contents = ref([]);
+
+const getContent = async () => {
+  const { data, error } = await supabase
+    .from("content")
+    .select("*")
+    .order("id", { ascending: false });
+  if (error) {
+    console.error("Error fetching content data:", error);
+  } else {
+    contents.value = data;
+  }
+};
+
+onMounted(() => {
+  getContent();
 });
 </script>

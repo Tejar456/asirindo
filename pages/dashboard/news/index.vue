@@ -104,39 +104,31 @@
               </thead>
 
               <tbody class="divide-y divide-gray-200">
-                <tr>
+                <tr v-for="item in news" :key="item.id">
                   <!-- Kolom gambar -->
                   <td class="px-6 py-3 w-40">
                     <img
-                      src="/assets/img/hero.webp"
+                      :src="item.image"
                       class="w-32 h-auto rounded-md"
                       alt="Hero Image"
                     />
                   </td>
-
-                  <!-- Kolom teks Indonesia -->
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Musik adalah alat yang efektif untuk membangun koneksi
-                      dengan pelanggan Anda
+                      {{ item.title }}
                     </p>
                   </td>
-
-                  <!-- Kolom teks Inggris -->
+                  
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ item.headline }}
                     </p>
-                  </td>
-                  <!-- Kolom teks Inggris -->
+                  </td>                  
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ item.content }}
                     </p>
-                  </td>
-                  <!-- Kolom aksi -->
+                  </td>                  
                   <td class="px-6 py-1.5 text-right w-px">
                     <div
                       class="hs-dropdown [--placement:bottom-right] relative inline-block"
@@ -265,5 +257,24 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
+});
+
+const supabase = useSupabaseClient();
+const news = ref([]);
+
+const getNews = async () => {
+  const { data, error } = await supabase
+    .from("news")
+    .select("*")
+    .order("id", { ascending: false });
+  if (error) {
+    console.error("Error fetching news data:", error);
+  } else {
+    news.value = data;
+  }
+};
+
+onMounted(() => {
+  getNews();
 });
 </script>

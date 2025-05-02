@@ -104,39 +104,31 @@
               </thead>
 
               <tbody class="divide-y divide-gray-200">
-                <tr>
-                  <!-- Kolom gambar -->
+                <tr v-for="management in managements" :key="management.id" >                  
                   <td class="px-6 py-3 w-40">
                     <img
-                      src="/assets/img/hero.webp"
+                      :src="management.image"
                       class="w-32 h-auto rounded-md"
                       alt="Hero Image"
                     />
                   </td>
-
-                  <!-- Kolom teks Indonesia -->
+                  
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Musik adalah alat yang efektif untuk membangun koneksi
-                      dengan pelanggan Anda
+                      {{ management.name }}
                     </p>
                   </td>
-
-                  <!-- Kolom teks Inggris -->
+                  
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ management.position_id }}
                     </p>
-                  </td>
-                  <!-- Kolom teks Inggris -->
+                  </td>                  
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ management.position_en }}
                     </p>
-                  </td>
-                  <!-- Kolom aksi -->
+                  </td>                  
                   <td class="px-6 py-1.5 text-right w-px">
                     <div
                       class="hs-dropdown [--placement:bottom-right] relative inline-block"
@@ -265,5 +257,25 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
+  middleware: "auth",
+});
+
+const supabase = useSupabaseClient();
+const managements = ref([]);
+
+const getManagement = async () => {
+  const { data, error } = await supabase
+    .from("management")
+    .select("*")
+    .order("id", { ascending: false });
+  if (error) {
+    console.error("Error fetching management data:", error);
+  } else {
+    managements.value = data;
+  }
+};
+
+onMounted(() => {
+  getManagement();
 });
 </script>

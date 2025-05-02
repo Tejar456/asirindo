@@ -1,11 +1,12 @@
 <template>
   <div class="max-w-5xl mx-auto p-6">
-    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">      
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
       <form
-        @submit.prevent="handleSubmit"
+        @submit.prevent="createLicense"
         @reset="handleReset"
         class="grid grid-cols-1 md:grid-cols-2 gap-6"
-      >        
+      >
+        <!-- Title ID -->
         <div>
           <label for="title-id" class="block text-sm font-medium mb-2"
             >Title ID</label
@@ -13,10 +14,12 @@
           <input
             type="text"
             id="title-id"
-            v-model="titleId"            
+            v-model="form.title_id"
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           />
-        </div>        
+        </div>
+
+        <!-- Title EN -->
         <div>
           <label for="title-en" class="block text-sm font-medium mb-2"
             >Title EN</label
@@ -24,35 +27,38 @@
           <input
             type="text"
             id="title-en"
-            v-model="titleEn"            
+            v-model="form.title_en"
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           />
         </div>
-    
-        <div class="md:col-span-1">
+
+        <!-- Description ID -->
+        <div>
           <label for="desc-id" class="block text-sm font-medium mb-2"
             >Description ID</label
           >
           <textarea
             id="desc-id"
-            v-model="descriptionId"
-            rows="3"            
+            v-model="form.description_id"
+            rows="3"
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           ></textarea>
         </div>
-        
-        <div class="md:col-span-1">
+
+        <!-- Description EN -->
+        <div>
           <label for="desc-en" class="block text-sm font-medium mb-2"
             >Description EN</label
           >
           <textarea
             id="desc-en"
-            v-model="descriptionEn"
-            rows="3"            
+            v-model="form.description_en"
+            rows="3"
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           ></textarea>
         </div>
-        
+
+        <!-- Buttons -->
         <div class="md:col-span-2 flex justify-end gap-4 pt-4">
           <button
             type="reset"
@@ -76,27 +82,40 @@
 definePageMeta({
   title: "Create License",
   layout: "dashboard",
+  middleware: "auth",
 });
 
-const titleId = ref("");
-const titleEn = ref("");
-const descriptionId = ref("");
-const descriptionEn = ref("");
+const supabase = useSupabaseClient();
 
-function handleSubmit() {
-  alert(`
-    Data disubmit:
-    Title ID: ${titleId.value}
-    Title EN: ${titleEn.value}
-    Description ID: ${descriptionId.value}
-    Description EN: ${descriptionEn.value}
-  `);
-}
+const form = ref({
+  title_id: "",
+  title_en: "",
+  description_id: "",
+  description_en: "",
+});
 
-function handleReset() {
-  titleId.value = "";
-  titleEn.value = "";
-  descriptionId.value = "";
-  descriptionEn.value = "";
-}
+const createLicense = async () => {
+  const { data, error } = await supabase
+    .from("license")
+    .insert([form.value])
+    .select("*");
+
+  if (error) {
+    console.error("Error creating license:", error);
+    alert("Failed to create license.");
+  } else {
+    console.log("License created:", data);
+    alert("License created successfully!");
+    handleReset();
+  }
+};
+
+const handleReset = () => {
+  form.value = {
+    title_id: "",
+    title_en: "",
+    description_id: "",
+    description_en: "",
+  };
+};
 </script>

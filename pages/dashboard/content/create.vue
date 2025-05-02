@@ -1,23 +1,23 @@
 <template>
   <div class="max-w-5xl mx-auto p-6">
-    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">      
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
       <form
-        @submit.prevent="handleSubmit"
+        @submit.prevent="createContent"
         @reset="handleReset"
         class="grid grid-cols-1 md:grid-cols-2 gap-6"
-      >        
+      >
         <div class="md:col-span-2">
           <label for="svg-icon" class="block text-sm font-medium mb-2"
             >SVG Icon</label
           >
           <textarea
             id="svg-icon"
-            v-model="svgContent"
-            rows="4"            
+            v-model="form.icon"
+            rows="4"
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           ></textarea>
         </div>
-        
+
         <div>
           <label for="title-id" class="block text-sm font-medium mb-2"
             >Title ID</label
@@ -25,7 +25,7 @@
           <input
             type="text"
             id="title-id"
-            v-model="titleId"            
+            v-model="form.title_id"
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           />
         </div>
@@ -37,7 +37,7 @@
           <input
             type="text"
             id="title-en"
-            v-model="titleEn"            
+            v-model="form.title_en"
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           />
         </div>
@@ -49,11 +49,11 @@
           <input
             type="number"
             id="amount"
-            v-model="amount"            
+            v-model="form.amount"
             class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
           />
         </div>
-        
+
         <div class="md:col-span-2 flex justify-end gap-4 pt-4">
           <button
             type="reset"
@@ -77,26 +77,42 @@
 definePageMeta({
   title: "Create Content",
   layout: "dashboard",
+  middleware: "auth",
 });
 
-const titleId = ref("");
-const titleEn = ref("");
-const amount = ref("");
-const iconSvg = ref("");
+const supabase = useSupabaseClient();
 
-function handleSubmit() {
-  alert(`
-      Title ID: ${titleId.value}
-      Title EN: ${titleEn.value}
-      Amount: ${amount.value}
-      Icon: ${iconSvg.value}
-    `);
+const form = ref({
+  title_id: "",
+  title_en: "",
+  amount: "",
+  icon: "",
+});
+
+async function createContent() {
+  const { error } = await supabase.from("content").insert({
+    title_id: form.value.title_id,
+    title_en: form.value.title_en,
+    amount: form.value.amount,
+    icon: form.value.icon,
+  });
+
+  if (error) {
+    console.error("Insert error:", error.message);
+    alert("Gagal menyimpan data.");
+    return;
+  }
+
+  alert("Data berhasil disimpan!");
+  handleReset();
 }
 
 function handleReset() {
-  titleId.value = "";
-  titleEn.value = "";
-  amount.value = "";
-  iconSvg.value = "";
+  form.value = {
+    title_id: "",
+    title_en: "",
+    amount: "",
+    icon: "",
+  };
 }
 </script>

@@ -1,14 +1,16 @@
 <template>
   <div class="p-6">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-white shadow-md rounded-2xl p-6 border border-gray-200">      
-      <div class="col-span-1 p-6">        
-        <form @submit.prevent="handleSubmit" @reset="handleReset">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-white shadow-md rounded-2xl p-6 border border-gray-200"
+    >
+      <!-- Form -->
+      <div class="col-span-1 p-6">
+        <form @submit.prevent="createHero" @reset="handleReset">
           <label for="file-input" class="block text-sm font-medium mb-2"
             >Pilih Gambar</label
           >
           <input
             type="file"
-            name="file-input"
             id="file-input"
             accept="image/*"
             @change="onFileChange"
@@ -21,7 +23,7 @@
           <input
             type="text"
             id="title-id"
-            v-model="titleId"
+            v-model="form.title_id"
             class="w-full py-2.5 px-4 border border-gray-300 rounded-lg text-sm mb-4 focus:border-blue-500 focus:ring-blue-500"
           />
 
@@ -31,9 +33,10 @@
           <input
             type="text"
             id="title-en"
-            v-model="titleEn"
+            v-model="form.title_en"
             class="w-full py-2.5 px-4 border border-gray-300 rounded-lg text-sm mb-6 focus:border-blue-500 focus:ring-blue-500"
-          />          
+          />
+
           <div class="flex justify-end space-x-4">
             <button
               type="reset"
@@ -49,7 +52,9 @@
             </button>
           </div>
         </form>
-      </div>      
+      </div>
+
+      <!-- Preview -->
       <div
         class="rounded-2xl p-6 border border-gray-200 flex flex-col items-center justify-center"
       >
@@ -73,30 +78,72 @@
 definePageMeta({
   layout: "dashboard",
   title: "Create Hero",
+  middleware: "auth",
 });
 
-const titleId = ref("");
-const titleEn = ref("");
+const supabase = useSupabaseClient();
+
+const form = ref({
+  title_id: "",
+  title_en: "",
+});
+
+const file = ref(null);
 const previewUrl = ref(null);
 
 function onFileChange(event) {
-  const file = event.target.files[0];
-  if (file) {
-    previewUrl.value = URL.createObjectURL(file);
+  file.value = event.target.files[0];
+  if (file.value) {
+    previewUrl.value = URL.createObjectURL(file.value);
   } else {
     previewUrl.value = null;
   }
 }
 
-function handleSubmit() {
-  alert(
-    `Data disubmit:\nJudul ID: ${titleId.value}\nJudul EN: ${titleEn.value}`
-  );  
-}
+const createHero = async () => {
+  if (!file.value) {
+    alert("Silakan pilih gambar terlebih dahulu.");
+    return;
+  }
 
-function handleReset() {
-  titleId.value = "";
-  titleEn.value = "";
+  const fileName = `${Date.now()}-${file.value.name}`;
+  const { data: uploadData, error: uploadError } = await supabase.storage
+    .from("img")
+    .upload(fileName, file.value);
+
+  if (uploadError) {
+    console.error("Upload error:", uploadError.message);
+    alert("Gagal mengunggah gambar.");
+    return;
+  }
+
+  const { data: publicUrlData } = supabase.storage
+    .from("img")
+    .getPublicUrl(uploadData.path);
+
+  const imageUrl = publicUrlData.publicUrl;
+
+  const { error: insertError } = await supabase.from("hero").insert({
+    title_id: form.value.title_id,
+    title_en: form.value.title_en,
+    image: imageUrl,
+  });
+
+  if (insertError) {
+    console.error("Database insert error:", insertError.message);
+    alert("Gagal menyimpan data ke database.");
+  } else {
+    alert("Data berhasil disimpan!");
+    handleReset();
+  }
+};
+
+const handleReset = () => {
+  form.value = {
+    title_id: "",
+    title_en: "",
+  };
+  file.value = null;
   previewUrl.value = null;
-}
+};
 </script>

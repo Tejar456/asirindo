@@ -6,7 +6,7 @@
       <div class="-m-1.5 overflow-x-auto">
         <div class="p-1.5 min-w-full inline-block align-middle">
           <div
-            class="bg-white  border border-gray-200 rounded-xl shadow-2xs overflow-hidden"
+            class="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden"
           >
             <!-- Header -->
             <div
@@ -54,7 +54,7 @@
             <!-- Table -->
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
-                <tr>                  
+                <tr>
                   <th scope="col" class="px-6 py-3 text-start">
                     <div class="flex items-center gap-x-2">
                       <span
@@ -104,30 +104,26 @@
               </thead>
 
               <tbody class="divide-y divide-gray-200">
-                <tr>                                    
+                <tr v-for="license in licenses" :key="license.id">
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Musik adalah alat yang efektif untuk membangun koneksi
-                      dengan pelanggan Anda
+                      {{ license.title_id }}
                     </p>
                   </td>
-                  
+
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ license.title_en }}
                     </p>
                   </td>
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ license.description_id }}
                     </p>
-                  </td>                  
+                  </td>
                   <td class="px-6 py-3 align-top max-w-xs">
                     <p class="text-sm text-gray-600 break-words">
-                      Music is an effective tool to build a connection with your
-                      customers
+                      {{ license.description_en }}
                     </p>
                   </td>
                   <td class="px-6 py-1.5 text-right w-px">
@@ -258,5 +254,25 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
+  middleware: "auth",
+});
+
+const supabase = useSupabaseClient();
+const licenses = ref([]);
+
+const getLicense = async () => {
+  const { data, error } = await supabase
+    .from("license")
+    .select("*")
+    .order("id", { ascending: false });
+  if (error) {
+    console.error("Error fetching license data:", error);
+  } else {
+    licenses.value = data;
+  }
+};
+
+onMounted(() => {
+  getLicense();
 });
 </script>
