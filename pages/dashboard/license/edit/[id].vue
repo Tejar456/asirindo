@@ -2,7 +2,7 @@
   <div class="mx-auto">
     <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
       <h2 class="text-2xl font-semibold text-gray-800 mb-6">
-        Create License Item
+        Edit License Item
       </h2>
 
       <form
@@ -81,19 +81,10 @@
             class="input-field"
           />
         </div>
-        
+
         <div class="md:col-span-2 flex justify-end gap-4 mt-4">
-          <button
-            type="reset"
-            class="btn-secondary"
-          >
-            Reset
-          </button>
-          <button
-            type="submit"
-            :disabled="isSubmitting"
-            class="btn-primary"
-          >
+          <button type="reset" class="btn-secondary">Reset</button>
+          <button type="submit" :disabled="isSubmitting" class="btn-primary">
             <svg
               v-if="isSubmitting"
               class="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
@@ -126,12 +117,13 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
-  title: "Create License",
+  title: "Edit License",
   middleware: "auth",
 });
 
 const router = useRouter();
 const supabase = useSupabaseClient();
+const route = useRoute();
 
 const isSubmitting = ref(false);
 
@@ -142,6 +134,33 @@ const form = ref({
   description_en: "",
   contoh_id: "",
   contoh_en: "",
+});
+
+// Fetch the existing license data when editing
+const fetchLicenseData = async () => {
+  const { data, error } = await supabase
+    .from("license")
+    .select("*")
+    .eq("id", route.params.id)
+    .single();
+
+  if (error) {
+    alert("Error fetching data: " + error.message);
+    return;
+  }
+
+  form.value = {
+    title_id: data.title_id,
+    title_en: data.title_en,
+    description_id: data.description_id,
+    description_en: data.description_en,
+    contoh_id: data.contoh_id,
+    contoh_en: data.contoh_en,
+  };
+};
+
+onMounted(() => {
+  fetchLicenseData();
 });
 
 const handleSubmit = async () => {
@@ -160,23 +179,24 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
 
   try {
-    const { error } = await supabase.from("license").insert([
-      {
+    const { error } = await supabase
+      .from("license")
+      .update({
         title_id: form.value.title_id,
         title_en: form.value.title_en,
         description_id: form.value.description_id,
         description_en: form.value.description_en,
         contoh_id: form.value.contoh_id,
         contoh_en: form.value.contoh_en,
-      },
-    ]);
+      })
+      .eq("id", route.params.id);
 
     if (error) throw error;
 
-    alert("Data successfully submitted!");
+    alert("Data successfully updated!");
     router.push("/dashboard/license");
   } catch (err) {
-    alert("Submission failed: " + err.message);
+    alert("Update failed: " + err.message);
   } finally {
     isSubmitting.value = false;
   }

@@ -15,7 +15,6 @@
           <label class="block text-sm font-medium mb-2">Image</label>
 
           <div v-if="!imagePreview" class="w-full">
-            <!-- Dropzone -->
             <label
               for="dropzone-file"
               class="flex flex-col items-center justify-center w-full h-96 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition"
@@ -23,7 +22,6 @@
               <div class="flex flex-col items-center justify-center pt-5 pb-6">
                 <svg
                   class="w-8 h-8 mb-4 text-gray-500"
-                  aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 20 16"
@@ -71,53 +69,36 @@
 
         <!-- Form Input -->
         <div>
-          <label for="position-id" class="block text-sm font-medium mb-2">
-            Name <span class="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="position-id"
-            v-model="form.name"
-            required
-            class="input-field"
-          />
+          <label class="block text-sm font-medium mb-2"
+            >Name <span class="text-red-500">*</span></label
+          >
+          <input type="text" v-model="form.name" required class="input-field" />
 
-          <label for="position-id" class="block text-sm font-medium mb-2 mt-4">
-            Position Id <span class="text-red-500">*</span>
-          </label>
+          <label class="block text-sm font-medium mb-2 mt-4"
+            >Position ID <span class="text-red-500">*</span></label
+          >
           <input
             type="text"
-            id="position-id"
             v-model="form.position_id"
             required
             class="input-field"
           />
 
-          <label for="position-en" class="block text-sm font-medium mb-2 mt-4">
-            Position EN <span class="text-red-500">*</span>
-          </label>
+          <label class="block text-sm font-medium mb-2 mt-4"
+            >Position EN <span class="text-red-500">*</span></label
+          >
           <input
             type="text"
-            id="position-en"
             v-model="form.position_en"
             required
             class="input-field"
           />
         </div>
 
-        <!-- Action Buttons -->
+        <!-- Actions -->
         <div class="md:col-span-2 flex justify-end gap-4">
-          <button
-            type="reset"
-            class="btn-secondary"
-          >
-            Reset
-          </button>
-          <button
-            type="submit"
-            class="btn-primary"
-            :disabled="isSubmitting"
-          >
+          <button type="reset" class="btn-secondary">Reset</button>
+          <button type="submit" class="btn-primary" :disabled="isSubmitting">
             <svg
               v-if="isSubmitting"
               class="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
@@ -132,12 +113,12 @@
                 r="10"
                 stroke="currentColor"
                 stroke-width="4"
-              ></circle>
+              />
               <path
                 class="opacity-75"
                 fill="currentColor"
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
+              />
             </svg>
             {{ isSubmitting ? "Submitting..." : "Submit" }}
           </button>
@@ -150,46 +131,47 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
-  position: "Edit Management",
+  position: "Edit management",
   middleware: "auth",
 });
 
+const route = useRoute();
 const router = useRouter();
 const supabase = useSupabaseClient();
+const id = route.params.id;
+
 const isSubmitting = ref(false);
 const imagePreview = ref(null);
 
-// Assuming you have an ID passed in the route query for editing
-const id = route.query.id;
 const form = ref({
   image: null,
   name: "",
   position_id: "",
   position_en: "",
-  description_en: "",
 });
 
-const fetchItemData = async () => {
-  try {
-    const { data, error } = await supabase
-      .from("management")
-      .select("*")
-      .eq("id", id)
-      .single();
-
-    if (error) throw error;
-
-    form.value.name = data.name;
-    form.value.position_id = data.position_id;
-    form.value.position_en = data.position_en;
-    imagePreview.value = data.image || null;
-  } catch (error) {
-    alert("Failed to fetch data: " + error.message);
+onMounted(async () => {
+  if (!id) {
+    alert("ID is missing!");
+    router.push("/dashboard/management");
+    return;
   }
-};
 
-onMounted(() => {
-  fetchItemData();
+  const { data, error } = await supabase
+    .from("management")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    alert("Failed to load data");
+    return;
+  }
+
+  form.value.name = data.name;
+  form.value.position_id = data.position_id;
+  form.value.position_en = data.position_en;
+  imagePreview.value = data.image || null;
 });
 
 const onFileChange = (e) => {
@@ -221,21 +203,22 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
 
   try {
-    let imageUrl = null;
+    let imageUrl = imagePreview.value;
 
-    if (form.value.image) {
+    if (form.value.image && typeof form.value.image !== "string") {
       const file = form.value.image;
       const fileName = `management-${Date.now()}-${file.name}`;
 
       const { error: uploadError } = await supabase.storage
         .from("img")
-        .upload(fileName, file);
+        .upload(fileName, file, { upsert: true });
 
       if (uploadError) throw uploadError;
 
       const { data: urlData } = supabase.storage
         .from("img")
         .getPublicUrl(fileName);
+
       imageUrl = urlData.publicUrl;
     }
 
@@ -251,17 +234,27 @@ const handleSubmit = async () => {
 
     if (updateError) throw updateError;
 
-    alert("Data successfully updated!");
+    alert("Successfully updated!");
     router.push("/dashboard/management");
   } catch (error) {
-    alert("Failed to submit: " + error.message);
+    alert("Failed to update: " + error.message);
   } finally {
     isSubmitting.value = false;
   }
 };
 
-const handleReset = () => {
-  fetchItemData();  // Reset to fetched data
-  isSubmitting.value = false;
+const handleReset = async () => {
+  const { data, error } = await supabase
+    .from("management")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (data) {
+    form.value.name = data.name;
+    form.value.position_id = data.position_id;
+    form.value.position_en = data.position_en;
+    imagePreview.value = data.image || null;
+  }
 };
 </script>

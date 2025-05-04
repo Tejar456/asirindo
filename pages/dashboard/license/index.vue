@@ -1,188 +1,241 @@
 <template>
   <!-- Table Section -->
-  <div class="w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div class="w-full mx-auto">
     <!-- Card -->
     <div class="flex flex-col">
       <div class="-m-1.5 overflow-x-auto">
         <div class="p-1.5 min-w-full inline-block align-middle">
           <div
-            class="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden"
+            class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden"
           >
             <!-- Header -->
             <div
               class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200"
             >
               <div>
-                <h2 class="text-2xl font-semibold text-gray-800">Lisence</h2>
+                <h2 class="text-2xl font-semibold text-gray-800">License Data</h2>
               </div>
 
-              <div>
-                <div class="inline-flex gap-x-2">
-                  <a
-                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-                    href="#"
+              <div class="flex items-center gap-3">
+                <NuxtLink
+                  class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all"
+                  to="/dashboard/license/create"
+                >
+                  <svg
+                    class="shrink-0 size-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   >
-                    View all
-                  </a>
-
-                  <NuxtLink
-                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                    href="/dashboard/license/create"
-                  >
-                    <svg
-                      class="shrink-0 size-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M5 12h14" />
-                      <path d="M12 5v14" />
-                    </svg>
-                    Create
-                  </NuxtLink>
-                </div>
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                  </svg>
+                  Create
+                </NuxtLink>
               </div>
             </div>
             <!-- End Header -->
 
             <!-- Table -->
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th scope="col" class="px-6 py-3 text-start">
-                    <div class="flex items-center gap-x-2">
+            <div class="overflow-x-auto">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-start">
+                      <div class="flex items-center gap-x-2">
+                        <span
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800"
+                        >
+                          Title Id
+                        </span>
+                      </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-start">
+                      <div class="flex items-center gap-x-2">
+                        <span
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800"
+                        >
+                          Title En
+                        </span>
+                      </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-start">
+                      <div class="flex items-center gap-x-2">
+                        <span
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800"
+                        >
+                          Description Id
+                        </span>
+                      </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-start">
+                      <div class="flex items-center gap-x-2">
+                        <span
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800"
+                        >
+                          Description En
+                        </span>
+                      </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-start">
+                      <div class="flex items-center gap-x-2">
+                        <span
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800"
+                        >
+                          Contoh Id
+                        </span>
+                      </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-start">
+                      <div class="flex items-center gap-x-2">
+                        <span
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800"
+                        >
+                          Contoh En
+                        </span>
+                      </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
                       <span
-                        class="text-xs font-semibold uppercase text-gray-800"
-                      >
-                        Title Id
-                      </span>
-                    </div>
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-start">
-                    <div class="flex items-center gap-x-2">
-                      <span
-                        class="text-xs font-semibold uppercase text-gray-800"
-                      >
-                        Title En
-                      </span>
-                    </div>
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-start">
-                    <div class="flex items-center gap-x-2">
-                      <span
-                        class="text-xs font-semibold uppercase text-gray-800"
-                      >
-                        Description Id
-                      </span>
-                    </div>
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-start">
-                    <div class="flex items-center gap-x-2">
-                      <span
-                        class="text-xs font-semibold uppercase text-gray-800"
-                      >
-                        Description En
-                      </span>
-                    </div>
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-start">
-                    <div class="flex items-center gap-x-2">
-                      <span
-                        class="text-xs font-semibold uppercase text-gray-800"
+                        class="text-xs font-semibold uppercase tracking-wide text-gray-800"
                       >
                         Action
                       </span>
-                    </div>
-                  </th>
-                </tr>
-              </thead>
+                    </th>
+                  </tr>
+                </thead>
 
-              <tbody class="divide-y divide-gray-200">
-                <tr v-for="license in licenses" :key="license.id">
-                  <td class="px-6 py-3 align-top max-w-xs">
-                    <p class="text-sm text-gray-600 break-words">
-                      {{ license.title_id }}
-                    </p>
-                  </td>
+                <tbody class="divide-y divide-gray-200">
+                  <tr
+                    v-for="license in paginatedLicenses"
+                    :key="license.id"
+                    class="hover:bg-gray-50 transition-colors"
+                  >
+                    <td class="px-6 py-4 align-top max-w-xs">
+                      <p class="text-sm text-gray-800 break-words font-medium">
+                        {{ license.title_id }}
+                      </p>
+                    </td>
 
-                  <td class="px-6 py-3 align-top max-w-xs">
-                    <p class="text-sm text-gray-600 break-words">
-                      {{ license.title_en }}
-                    </p>
-                  </td>
-                  <td class="px-6 py-3 align-top max-w-xs">
-                    <p class="text-sm text-gray-600 break-words">
-                      {{ license.description_id }}
-                    </p>
-                  </td>
-                  <td class="px-6 py-3 align-top max-w-xs">
-                    <p class="text-sm text-gray-600 break-words">
-                      {{ license.description_en }}
-                    </p>
-                  </td>
-                  <td class="px-6 py-1.5 text-right w-px">
-                    <div
-                      class="hs-dropdown [--placement:bottom-right] relative inline-block"
-                    >
-                      <button
-                        id="hs-table-dropdown-1"
-                        type="button"
-                        class="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-lg text-gray-700 align-middle disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm"
-                        aria-haspopup="menu"
-                        aria-expanded="false"
-                        aria-label="Dropdown"
+                    <td class="px-6 py-4 align-top max-w-xs">
+                      <p class="text-sm text-gray-800 break-words font-medium">
+                        {{ license.title_en }}
+                      </p>
+                    </td>
+
+                    <td class="px-6 py-4 align-top max-w-xs">
+                      <p class="text-sm text-gray-600 break-words line-clamp-3">
+                        {{ license.description_id }}
+                      </p>
+                    </td>
+
+                    <td class="px-6 py-4 align-top max-w-xs">
+                      <p class="text-sm text-gray-600 break-words line-clamp-3">
+                        {{ license.description_en }}
+                      </p>
+                    </td>
+                    <td class="px-6 py-4 align-top max-w-xs">
+                      <p class="text-sm text-gray-600 break-words line-clamp-3">
+                        {{ license.contoh_id }}
+                      </p>
+                    </td>
+                    <td class="px-6 py-4 align-top max-w-xs">
+                      <p class="text-sm text-gray-600 break-words line-clamp-3">
+                        {{ license.contoh_en }}
+                      </p>
+                    </td>
+
+                    <td class="px-6 py-4 text-center whitespace-nowrap">
+                      <div class="flex items-center justify-center gap-2">
+                        <button
+                          @click="editLicense(license.id)"
+                          class="inline-flex items-center justify-center gap-2 rounded-md border border-transparent bg-blue-50 px-3 py-2 text-sm font-medium text-blue-600 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-pencil-line"
+                          >
+                            <path d="M12 20h9" />
+                            <path
+                              d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"
+                            />
+                          </svg>
+                          Edit
+                        </button>
+                        <button
+                          @click="confirmDelete(license.id)"
+                          class="inline-flex items-center justify-center gap-2 rounded-md border border-transparent bg-red-50 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-trash-2"
+                          >
+                            <path d="M3 6h18" />
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                            <line x1="10" x2="10" y1="11" y2="17" />
+                            <line x1="14" x2="14" y1="11" y2="17" />
+                          </svg>
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- Empty state when no results -->
+                  <tr v-if="paginatedLicenses.length === 0">
+                    <td colspan="6" class="px-6 py-12 text-center">
+                      <div
+                        class="flex flex-col items-center justify-center space-y-3"
                       >
                         <svg
-                          class="shrink-0 size-4"
                           xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
+                          width="40"
+                          height="40"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
-                          stroke-width="2"
+                          stroke-width="1.5"
                           stroke-linecap="round"
                           stroke-linejoin="round"
+                          class="text-gray-400"
                         >
-                          <circle cx="12" cy="12" r="1" />
-                          <circle cx="19" cy="12" r="1" />
-                          <circle cx="5" cy="12" r="1" />
+                          <rect x="2" y="5" width="20" height="14" rx="2" />
+                          <line x1="2" y1="10" x2="22" y2="10" />
                         </svg>
-                      </button>
-                      <div
-                        class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden divide-y divide-gray-200 min-w-40 z-10 bg-white shadow-2xl rounded-lg p-2 mt-2"
-                        role="menu"
-                        aria-orientation="vertical"
-                        aria-labelledby="hs-table-dropdown-1"
-                      >
-                        <div class="py-2 first:pt-0 last:pb-0">
-                          <a
-                            class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100"
-                            href="#"
-                          >
-                            Edit
-                          </a>
-                        </div>
-                        <div class="py-2 first:pt-0 last:pb-0">
-                          <a
-                            class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100"
-                            href="#"
-                          >
-                            Delete
-                          </a>
-                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">
+                          No data found
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                          No matching data was found or the data table is empty.
+                        </p>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <!-- End Table -->
 
             <!-- Footer -->
@@ -191,7 +244,20 @@
             >
               <div>
                 <p class="text-sm text-gray-600">
-                  <span class="font-semibold text-gray-800">6</span> results
+                  Showing
+                  {{
+                    paginatedLicenses.length
+                      ? (currentPage - 1) * itemsPerPage + 1
+                      : 0
+                  }}
+                  to
+                  {{
+                    Math.min(
+                      currentPage * itemsPerPage,
+                      filteredLicenses.length
+                    )
+                  }}
+                  of {{ filteredLicenses.length }} results
                 </p>
               </div>
 
@@ -199,7 +265,14 @@
                 <div class="inline-flex gap-x-2">
                   <button
                     type="button"
-                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    :disabled="currentPage === 1"
+                    :class="[
+                      'py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm transition-all',
+                      currentPage === 1
+                        ? 'opacity-50 cursor-not-allowed'
+                        : 'hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+                    ]"
+                    @click="prevPage"
                   >
                     <svg
                       class="shrink-0 size-4"
@@ -218,9 +291,33 @@
                     Prev
                   </button>
 
+                  <div class="flex items-center gap-x-1">
+                    <template v-for="page in totalPages" :key="page">
+                      <button
+                        type="button"
+                        :class="[
+                          'py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg transition-all',
+                          currentPage === page
+                            ? 'bg-blue-600 text-white'
+                            : 'border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+                        ]"
+                        @click="goToPage(page)"
+                      >
+                        {{ page }}
+                      </button>
+                    </template>
+                  </div>
+
                   <button
                     type="button"
-                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                    :disabled="currentPage === totalPages || totalPages === 0"
+                    :class="[
+                      'py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm transition-all',
+                      currentPage === totalPages || totalPages === 0
+                        ? 'opacity-50 cursor-not-allowed'
+                        : 'hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+                    ]"
+                    @click="nextPage"
                   >
                     Next
                     <svg
@@ -247,6 +344,79 @@
       </div>
     </div>
     <!-- End Card -->
+
+    <!-- Delete Confirmation Modal -->
+    <div v-if="showDeleteModal" class="fixed inset-0 z-50 overflow-y-auto">
+      <div
+        class="flex min-h-screen items-center justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0"
+      >
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+          <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        <span
+          class="hidden sm:inline-block sm:h-screen sm:align-middle"
+          aria-hidden="true"
+          >&#8203;</span
+        >
+        <div
+          class="inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle"
+        >
+          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="sm:flex sm:items-start">
+              <div
+                class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-red-600"
+                >
+                  <path
+                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                  />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+              </div>
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <h3 class="text-lg font-medium leading-6 text-gray-900">
+                  Delete license Item
+                </h3>
+                <div class="mt-2">
+                  <p class="text-sm text-gray-500">
+                    Are you sure you want to delete this item? This action
+                    cannot be undone.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+            <button
+              type="button"
+              class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+              @click="deleteLicense"
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+              @click="showDeleteModal = false"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- End Table Section -->
 </template>
@@ -257,22 +427,88 @@ definePageMeta({
   middleware: "auth",
 });
 
+const router = useRouter();
 const supabase = useSupabaseClient();
 const licenses = ref([]);
+const filteredLicenses = ref([]);
+const showDeleteModal = ref(false);
+const deleteItemId = ref(null);
 
-const getLicense = async () => {
-  const { data, error } = await supabase
-    .from("license")
-    .select("*")
-    .order("id", { ascending: false });
-  if (error) {
-    console.error("Error fetching license data:", error);
-  } else {
-    licenses.value = data;
+const currentPage = ref(1);
+const itemsPerPage = 6;
+
+const totalPages = computed(() => Math.ceil(filteredLicenses.value.length / itemsPerPage));
+
+const paginatedLicenses = computed(() => {
+  const startIndex = (currentPage.value - 1) * itemsPerPage;
+  return filteredLicenses.value.slice(startIndex, startIndex + itemsPerPage);
+});
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) currentPage.value++;
+};
+
+const prevPage = () => {
+  if (currentPage.value > 1) currentPage.value--;
+};
+
+const goToPage = (page) => {
+  if (page >= 1 && page <= totalPages.value) currentPage.value = page;
+};
+
+watch(licenses, () => {
+  filteredLicenses.value = [...licenses.value];
+}, { immediate: true });
+
+const editLicense = (id) => {
+  router.push(`/dashboard/license/edit/${id}`);
+};
+
+const confirmDelete = (id) => {
+  deleteItemId.value = id;
+  showDeleteModal.value = true;
+};
+
+const deleteLicense = async () => {
+  if (!deleteItemId.value) return;
+
+  try {
+    const { error } = await supabase
+      .from("license")
+      .delete()
+      .eq("id", deleteItemId.value);
+
+    if (error) throw error;
+
+    licenses.value = licenses.value.filter(item => item.id !== deleteItemId.value);
+    filteredLicenses.value = licenses.value;
+    
+    if (paginatedLicenses.value.length === 0 && currentPage.value > 1) {
+      currentPage.value--;
+    }
+  } catch (error) {
+    console.error("Error deleting item:", error.message);
+  } finally {
+    showDeleteModal.value = false;
+    deleteItemId.value = null;
   }
 };
 
-onMounted(() => {
-  getLicense();
-});
+const getLicenses = async () => {
+  try {
+    const { data, error } = await supabase
+      .from("license")
+      .select("*")
+      .order("id", { ascending: false });
+
+    if (error) throw error;
+
+    licenses.value = data || [];
+    filteredLicenses.value = [...licenses.value];
+  } catch (error) {
+    console.error("Error fetching license data:", error.message);
+  }
+};
+
+onMounted(getLicenses);
 </script>

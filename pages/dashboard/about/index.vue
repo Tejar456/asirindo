@@ -13,7 +13,7 @@
               class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200"
             >
               <div>
-                <h2 class="text-2xl font-semibold text-gray-800">About</h2>
+                <h2 class="text-2xl font-semibold text-gray-800">About Data</h2>
               </div>
 
               <div class="flex items-center gap-3">
@@ -408,9 +408,6 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from "vue";
-import { useRouter } from "vue-router";
-
 definePageMeta({
   layout: "dashboard",
   middleware: "auth",
@@ -426,30 +423,25 @@ const deleteItemId = ref(null);
 const currentPage = ref(1);
 const itemsPerPage = 6;
 
-const totalPages = computed(() => {
-  return Math.ceil(filteredAbouts.value.length / itemsPerPage);
-});
+const totalPages = computed(() =>
+  Math.ceil(filteredAbouts.value.length / itemsPerPage)
+);
 
 const paginatedAbouts = computed(() => {
   const startIndex = (currentPage.value - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  return filteredAbouts.value.slice(startIndex, endIndex);
+  return filteredAbouts.value.slice(startIndex, startIndex + itemsPerPage);
 });
 
 const nextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++;
-  }
+  if (currentPage.value < totalPages.value) currentPage.value++;
 };
 
 const prevPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value--;
-  }
+  if (currentPage.value > 1) currentPage.value--;
 };
 
 const goToPage = (page) => {
-  currentPage.value = page;
+  if (page >= 1 && page <= totalPages.value) currentPage.value = page;
 };
 
 watch(
@@ -489,7 +481,7 @@ const deleteAbout = async () => {
       currentPage.value--;
     }
   } catch (error) {
-    console.error("Error deleting item:", error);
+    console.error("Error deleting item:", error.message);
   } finally {
     showDeleteModal.value = false;
     deleteItemId.value = null;
@@ -505,14 +497,12 @@ const getAbout = async () => {
 
     if (error) throw error;
 
-    abouts.value = data;
-    filteredAbouts.value = [...data];
+    abouts.value = data || [];
+    filteredAbouts.value = [...abouts.value];
   } catch (error) {
-    console.error("Error fetching about data:", error);
+    console.error("Error fetching about data:", error.message);
   }
 };
 
-onMounted(() => {
-  getAbout();
-});
+onMounted(getAbout);
 </script>

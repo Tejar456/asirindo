@@ -1,56 +1,109 @@
+<script setup>
+const supabase = useSupabaseClient();
+const slides = ref([]);
+const currentIndex = ref(0);
+const { locale } = useI18n();
+
+const titleField = computed(() =>
+  locale.value === "en" ? "title_en" : "title_id"
+);
+const currentTextKey = computed(
+  () => slides.value[currentIndex.value]?.[titleField.value] || ""
+);
+
+const getSliderData = async () => {
+  try {
+    const { data, error } = await supabase.from("hero").select(`*`);
+
+    if (error) {
+      console.error("Error:", error);
+      return;
+    }
+
+    if (data && data.length > 0) {
+      slides.value = data;
+    }
+  } catch (err) {
+    console.error("Failed to fetch slider data:", err);
+  }
+};
+let interval = null;
+
+const nextText = () => {
+  currentIndex.value = (currentIndex.value + 1) % slides.value.length;
+  resetInterval();
+};
+
+const prevText = () => {
+  currentIndex.value =
+    (currentIndex.value - 1 + slides.value.length) % slides.value.length;
+  resetInterval();
+};
+
+const startInterval = () => {
+  interval = setInterval(() => {
+    nextText();
+  }, 4000);
+};
+
+const resetInterval = () => {
+  clearInterval(interval);
+  startInterval();
+};
+
+onMounted(() => {
+  getSliderData();
+  startInterval();
+});
+
+onUnmounted(() => {
+  clearInterval(interval);
+});
+</script>
+
 <template>
   <div>
     <!-- Slider -->
     <div
       data-hs-carousel='{
-              "loadingClasses": "opacity-0",
-              "dotsItemClasses": "hs-carousel-active:bg-white hs-carousel-active:border-white size-3 border border-gray-400 rounded-full cursor-pointer",
-              "isAutoPlay": true
-          }'
+        "loadingClasses": "opacity-0",
+        "dotsItemClasses": "hs-carousel-active:bg-white hs-carousel-active:border-white size-3 border border-gray-400 rounded-full cursor-pointer",
+        "isAutoPlay": true
+      }'
       class="relative bg-gray-700"
     >
-      <div class="hs-carousel relative overflow-hidden h-screen bg-white">
-        <div
-          class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0"
-        >
-          <div class="hs-carousel-slide">
-            <div class="flex justify-center h-full w-full bg-gray-100 relative">
-              <img
-                src="/assets/img/hero.webp"
-                alt="hero"
-                class="object-cover brightness-50 w-full"
-              />
-            </div>
-          </div>
-          <div class="hs-carousel-slide">
-            <div class="flex justify-center h-full w-full bg-gray-200">
-              <img
-                src="/assets/img/hero4.webp"
-                alt="hero"
-                class="object-cover w-full brightness-50"
-              />
-            </div>
-          </div>
-          <div class="hs-carousel-slide">
-            <div class="flex justify-center h-full w-full bg-gray-300">
-              <img
-                src="/assets/img/hero3.webp"
-                alt="hero"
-                class="object-cover w-full brightness-50"
-              />
-            </div>
-          </div>
-          <div class="hs-carousel-slide">
-            <div class="flex justify-center h-full w-full bg-gray-300">
-              <img
-                src="assets/img/hero2.webp"
-                alt="hero"
-                class="object-cover w-full brightness-50"
-              />
+      <div class="relative bg-gray-700 h-screen">
+        <div class="relative overflow-hidden h-full">
+          <div
+            class="absolute inset-0 flex transition-transform duration-700"
+            :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
+          >
+            <div
+              v-for="(item, i) in slides"
+              :key="i"
+              class="min-w-full h-full flex-shrink-0"
+            >
+              <div class="h-full w-full relative">
+                <img
+                  :src="item.image"
+                  :alt="`Slide ${i + 1}`"
+                  class="object-cover w-full h-full brightness-50"
+                  @error="item.imageError = true"
+                />
+                <!-- Fallback untuk gambar error -->
+                <div
+                  v-if="item.imageError"
+                  class="absolute inset-0 bg-gray-800 flex items-center justify-center"
+                >
+                  <span class="text-white text-lg">Image not available</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Navigation  -->
       <button
         type="button"
         @click="prevText"
@@ -77,6 +130,7 @@
         </span>
         <span class="sr-only">Previous</span>
       </button>
+
       <button
         type="button"
         @click="nextText"
@@ -103,6 +157,7 @@
           </svg>
         </span>
       </button>
+
       <div
         class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2"
       ></div>
@@ -113,7 +168,7 @@
       class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center z-10 mt-10 w-4/5 transition-all duration-700"
     >
       <h1 class="text-3xl md:text-4xl font-semibold">
-        {{ $t(currentTextKey) }}
+        {{ currentTextKey }}
       </h1>
       <p class="mt-5">
         {{ $t("text") }}
@@ -137,7 +192,8 @@
         </nuxt-link>
       </div>
     </div>
-    <!-- End Overlay -->
+
+    <!-- Talk Section -->
     <section id="talk">
       <div
         class="banner w-full h-auto p-5 bg-[#1E1E1E] flex justify-center items-center flex-col gap-5 text-center"
@@ -173,47 +229,3 @@
     </section>
   </div>
 </template>
-
-<script setup>
-const textKeys = ["text1", "text2", "text3", "text4", "text5"];
-const currentIndex = ref(0);
-const currentTextKey = ref(textKeys[currentIndex.value]);
-
-let interval = null;
-
-const updateText = () => {
-  currentTextKey.value = textKeys[currentIndex.value];
-};
-
-const nextText = () => {
-  currentIndex.value = (currentIndex.value + 1) % textKeys.length;
-  updateText();
-  resetInterval();
-};
-
-const prevText = () => {
-  currentIndex.value =
-    (currentIndex.value - 1 + textKeys.length) % textKeys.length;
-  updateText();
-  resetInterval();
-};
-
-const startInterval = () => {
-  interval = setInterval(() => {
-    nextText();
-  }, 4000);
-};
-
-const resetInterval = () => {
-  clearInterval(interval);
-  startInterval();
-};
-
-onMounted(() => {
-  startInterval();
-});
-
-onUnmounted(() => {
-  clearInterval(interval);
-});
-</script>

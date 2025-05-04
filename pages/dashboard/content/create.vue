@@ -1,71 +1,105 @@
 <template>
-  <div class="max-w-5xl mx-auto p-6">
-    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
+  <div class="mx-auto">
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+        Create Content Item
+      </h2>
+
       <form
-        @submit.prevent="createContent"
+        @submit.prevent="handleSubmit"
         @reset="handleReset"
         class="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
+        <!-- Icon -->
         <div class="md:col-span-2">
-          <label for="svg-icon" class="block text-sm font-medium mb-2"
-            >SVG Icon</label
-          >
+          <label for="icon" class="form-label">
+            Icon <span class="text-red-500">*</span>
+          </label>
           <textarea
-            id="svg-icon"
+            id="icon"
             v-model="form.icon"
-            rows="4"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
+            required
+            rows="3"
+            class="textarea-field"
           ></textarea>
         </div>
 
+        <!-- Title ID -->
         <div>
-          <label for="title-id" class="block text-sm font-medium mb-2"
-            >Title ID</label
-          >
+          <label for="title-id" class="form-label">
+            Title ID <span class="text-red-500">*</span>
+          </label>
           <input
-            type="text"
             id="title-id"
-            v-model="form.title_id"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label for="title-en" class="block text-sm font-medium mb-2"
-            >Title EN</label
-          >
-          <input
             type="text"
-            id="title-en"
-            v-model="form.title_en"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
+            v-model="form.title_id"
+            required
+            class="input-field"
           />
         </div>
 
-        <div class="md:col-span-2">
-          <label for="amount" class="block text-sm font-medium mb-2"
-            >Amount</label
-          >
+        <!-- Title EN -->
+        <div>
+          <label for="title-en" class="form-label">
+            Title EN <span class="text-red-500">*</span>
+          </label>
           <input
-            type="number"
-            id="amount"
-            v-model="form.amount"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
+            id="title-en"
+            type="text"
+            v-model="form.title_en"
+            required
+            class="input-field"
           />
         </div>
 
-        <div class="md:col-span-2 flex justify-end gap-4 pt-4">
-          <button
-            type="reset"
-            class="px-4 py-2 rounded-lg border text-gray-700 bg-white hover:bg-gray-100"
-          >
+        <!-- Amount -->
+        <div class="md:col-span-2">
+          <label for="amount" class="form-label">
+            Amount <span class="text-red-500">*</span>
+          </label>
+          <input
+            id="amount"
+            type="number"
+            v-model="form.amount"
+            required
+            class="input-field"
+          />
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="md:col-span-2 flex justify-end gap-4 mt-4">
+          <button type="reset" class="btn-secondary" :disabled="isSubmitting">
             Reset
           </button>
+
           <button
             type="submit"
-            class="px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700"
+            :disabled="isSubmitting || !isFormValid"
+            :aria-disabled="isSubmitting"
+            class="btn-primary"
           >
-            Submit
+            <svg
+              v-if="isSubmitting"
+              class="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
+            </svg>
+            {{ isSubmitting ? "Submitting..." : "Submit" }}
           </button>
         </div>
       </form>
@@ -75,44 +109,68 @@
 
 <script setup>
 definePageMeta({
-  title: "Create Content",
   layout: "dashboard",
+  title: "Create Content",
   middleware: "auth",
 });
 
+const router = useRouter();
 const supabase = useSupabaseClient();
 
+const isSubmitting = ref(false);
+
 const form = ref({
+  icon: "",
   title_id: "",
   title_en: "",
-  amount: "",
-  icon: "",
+  amount: null,
 });
 
-async function createContent() {
-  const { error } = await supabase.from("content").insert({
-    title_id: form.value.title_id,
-    title_en: form.value.title_en,
-    amount: form.value.amount,
-    icon: form.value.icon,
-  });
+// Validate form fields
+const isFormValid = computed(() => {
+  return (
+    form.value.icon &&
+    form.value.title_id &&
+    form.value.title_en &&
+    form.value.amount
+  );
+});
 
-  if (error) {
-    console.error("Insert error:", error.message);
-    alert("Gagal menyimpan data.");
+const handleSubmit = async () => {
+  if (!isFormValid.value) {
+    alert("Please fill in all required fields.");
     return;
   }
 
-  alert("Data berhasil disimpan!");
-  handleReset();
-}
+  isSubmitting.value = true;
 
-function handleReset() {
+  try {
+    const { error } = await supabase.from("content").insert([
+      {
+        icon: form.value.icon,
+        title_id: form.value.title_id,
+        title_en: form.value.title_en,
+        amount: form.value.amount,
+      },
+    ]);
+
+    if (error) throw error;
+
+    alert("Data successfully submitted!");
+    router.push("/dashboard/content");
+  } catch (err) {
+    alert("Failed to submit data: " + err.message);
+  } finally {
+    isSubmitting.value = false;
+  }
+};
+
+const handleReset = () => {
   form.value = {
+    icon: "",
     title_id: "",
     title_en: "",
-    amount: "",
-    icon: "",
+    amount: null,
   };
-}
+};
 </script>

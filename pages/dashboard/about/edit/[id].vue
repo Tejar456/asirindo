@@ -1,18 +1,16 @@
 <template>
   <div class="mx-auto">
     <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6">
-        Edit Management Item
-      </h2>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Edit About Item</h2>
 
       <form
         @submit.prevent="handleSubmit"
         @reset="handleReset"
         class="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        <!-- image Upload -->
+        <!-- Icon Upload -->
         <div>
-          <label class="block text-sm font-medium mb-2">Image</label>
+          <label class="block text-sm font-medium mb-2">Icon</label>
 
           <div v-if="!imagePreview" class="w-full">
             <!-- Dropzone -->
@@ -71,53 +69,55 @@
 
         <!-- Form Input -->
         <div>
-          <label for="position-id" class="block text-sm font-medium mb-2">
-            Name <span class="text-red-500">*</span>
+          <label for="title-id" class="block text-sm font-medium mb-2">
+            Title ID <span class="text-red-500">*</span>
           </label>
           <input
             type="text"
-            id="position-id"
-            v-model="form.name"
+            id="title-id"
+            v-model="form.title_id"
             required
             class="input-field"
           />
 
-          <label for="position-id" class="block text-sm font-medium mb-2 mt-4">
-            Position Id <span class="text-red-500">*</span>
+          <label for="title-en" class="block text-sm font-medium mb-2 mt-4">
+            Title EN <span class="text-red-500">*</span>
           </label>
           <input
             type="text"
-            id="position-id"
-            v-model="form.position_id"
+            id="title-en"
+            v-model="form.title_en"
             required
             class="input-field"
           />
 
-          <label for="position-en" class="block text-sm font-medium mb-2 mt-4">
-            Position EN <span class="text-red-500">*</span>
+          <label for="desc-id" class="block text-sm font-medium mb-2 mt-4">
+            Description ID <span class="text-red-500">*</span>
           </label>
-          <input
-            type="text"
-            id="position-en"
-            v-model="form.position_en"
+          <textarea
+            id="desc-id"
+            v-model="form.description_id"
             required
-            class="input-field"
-          />
+            rows="4"
+            class="textarea-field"
+          ></textarea>
+
+          <label for="desc-en" class="block text-sm font-medium mb-2 mt-4">
+            Description EN <span class="text-red-500">*</span>
+          </label>
+          <textarea
+            id="desc-en"
+            v-model="form.description_en"
+            required
+            rows="4"
+            class="textarea-field"
+          ></textarea>
         </div>
 
         <!-- Action Buttons -->
         <div class="md:col-span-2 flex justify-end gap-4">
-          <button
-            type="reset"
-            class="btn-secondary"
-          >
-            Reset
-          </button>
-          <button
-            type="submit"
-            class="btn-primary"
-            :disabled="isSubmitting"
-          >
+          <button type="reset" class="btn-secondary">Reset</button>
+          <button type="submit" class="btn-primary" :disabled="isSubmitting">
             <svg
               v-if="isSubmitting"
               class="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
@@ -139,7 +139,7 @@
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            {{ isSubmitting ? "Submitting..." : "Submit" }}
+            {{ isSubmitting ? "Updating..." : "Update" }}
           </button>
         </div>
       </form>
@@ -150,52 +150,55 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
-  position: "Edit Management",
+  title: "Edit About",
   middleware: "auth",
 });
 
+const route = useRoute();
 const router = useRouter();
 const supabase = useSupabaseClient();
+
 const isSubmitting = ref(false);
 const imagePreview = ref(null);
+const aboutId = route.params.id;
 
-// Assuming you have an ID passed in the route query for editing
-const id = route.query.id;
 const form = ref({
-  image: null,
-  name: "",
-  position_id: "",
-  position_en: "",
+  icon: null,
+  title_id: "",
+  title_en: "",
+  description_id: "",
   description_en: "",
+  existingIcon: null,
 });
 
-const fetchItemData = async () => {
-  try {
-    const { data, error } = await supabase
-      .from("management")
-      .select("*")
-      .eq("id", id)
-      .single();
+onMounted(async () => {
+  const { data, error } = await supabase
+    .from("about")
+    .select("*")
+    .eq("id", aboutId)
+    .single();
 
-    if (error) throw error;
-
-    form.value.name = data.name;
-    form.value.position_id = data.position_id;
-    form.value.position_en = data.position_en;
-    imagePreview.value = data.image || null;
-  } catch (error) {
-    alert("Failed to fetch data: " + error.message);
+  if (error) {
+    alert("Gagal memuat data: " + error.message);
+    router.push("/dashboard/about");
+    return;
   }
-};
 
-onMounted(() => {
-  fetchItemData();
+  form.value = {
+    icon: null,
+    title_id: data.title_id,
+    title_en: data.title_en,
+    description_id: data.description_id,
+    description_en: data.description_en,
+    existingIcon: data.icon,
+  };
+  imagePreview.value = data.icon;
 });
 
 const onFileChange = (e) => {
   const file = e.target.files[0];
   if (file) {
-    form.value.image = file;
+    form.value.icon = file;
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -206,26 +209,32 @@ const onFileChange = (e) => {
 };
 
 const clearImage = () => {
-  form.value.image = null;
+  form.value.icon = null;
+  form.value.existingIcon = null;
   imagePreview.value = null;
   const input = document.getElementById("dropzone-file");
   if (input) input.value = "";
 };
 
 const handleSubmit = async () => {
-  if (!form.value.name || !form.value.position_id || !form.value.position_en) {
-    alert("Please fill all required fields");
+  if (
+    !form.value.title_id ||
+    !form.value.title_en ||
+    !form.value.description_id ||
+    !form.value.description_en
+  ) {
+    alert("Harap isi semua field yang wajib");
     return;
   }
 
   isSubmitting.value = true;
 
   try {
-    let imageUrl = null;
+    let iconUrl = form.value.existingIcon;
 
-    if (form.value.image) {
-      const file = form.value.image;
-      const fileName = `management-${Date.now()}-${file.name}`;
+    if (form.value.icon) {
+      const file = form.value.icon;
+      const fileName = `about-${Date.now()}-${file.name}`;
 
       const { error: uploadError } = await supabase.storage
         .from("img")
@@ -236,32 +245,33 @@ const handleSubmit = async () => {
       const { data: urlData } = supabase.storage
         .from("img")
         .getPublicUrl(fileName);
-      imageUrl = urlData.publicUrl;
+      iconUrl = urlData.publicUrl;
     }
 
     const { error: updateError } = await supabase
-      .from("management")
+      .from("about")
       .update({
-        image: imageUrl,
-        name: form.value.name,
-        position_id: form.value.position_id,
-        position_en: form.value.position_en,
+        icon: iconUrl,
+        title_id: form.value.title_id,
+        title_en: form.value.title_en,
+        description_id: form.value.description_id,
+        description_en: form.value.description_en,
       })
-      .eq("id", id);
+      .eq("id", aboutId);
 
     if (updateError) throw updateError;
 
-    alert("Data successfully updated!");
-    router.push("/dashboard/management");
-  } catch (error) {
-    alert("Failed to submit: " + error.message);
+    alert("Data berhasil diperbarui!");
+    router.push("/dashboard/about");
+  } catch (err) {
+    alert("Gagal update data: " + err.message);
   } finally {
     isSubmitting.value = false;
   }
 };
 
 const handleReset = () => {
-  fetchItemData();  // Reset to fetched data
-  isSubmitting.value = false;
+  form.value.icon = null;
+  imagePreview.value = form.value.existingIcon;
 };
 </script>

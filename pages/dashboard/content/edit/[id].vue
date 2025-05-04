@@ -2,7 +2,7 @@
   <div class="mx-auto">
     <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
       <h2 class="text-2xl font-semibold text-gray-800 mb-6">
-        Create License Item
+        Edit Content Item
       </h2>
 
       <form
@@ -10,88 +10,72 @@
         @reset="handleReset"
         class="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        <!-- Kolom Kiri -->
+        <!-- Icon -->
+        <div class="md:col-span-2">
+          <label for="icon" class="form-label">
+            Icon <span class="text-red-500">*</span>
+          </label>
+          <textarea
+            id="icon"
+            v-model="form.icon"
+            required
+            rows="3"
+            class="textarea-field"
+          ></textarea>
+        </div>
+
+        <!-- Title ID -->
         <div>
-          <label for="title-id" class="block text-sm font-medium mb-2 mt-4">
+          <label for="title-id" class="form-label">
             Title ID <span class="text-red-500">*</span>
           </label>
           <input
-            type="text"
             id="title-id"
+            type="text"
             v-model="form.title_id"
             required
             class="input-field"
           />
-
-          <label for="desc-id" class="block text-sm font-medium mb-2 mt-4">
-            Description ID <span class="text-red-500">*</span>
-          </label>
-          <textarea
-            id="desc-id"
-            v-model="form.description_id"
-            required
-            rows="4"
-            class="textarea-field"
-          ></textarea>
-
-          <label for="contoh-id" class="block text-sm font-medium mb-2 mt-4">
-            Contoh ID <span class="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="contoh-id"
-            v-model="form.contoh_id"
-            required
-            class="input-field"
-          />
         </div>
 
-        <!-- Kolom Kanan -->
+        <!-- Title EN -->
         <div>
-          <label for="title-en" class="block text-sm font-medium mb-2 mt-4">
+          <label for="title-en" class="form-label">
             Title EN <span class="text-red-500">*</span>
           </label>
           <input
-            type="text"
             id="title-en"
+            type="text"
             v-model="form.title_en"
             required
             class="input-field"
           />
+        </div>
 
-          <label for="desc-en" class="block text-sm font-medium mb-2 mt-4">
-            Description EN <span class="text-red-500">*</span>
-          </label>
-          <textarea
-            id="desc-en"
-            v-model="form.description_en"
-            required
-            rows="4"
-            class="textarea-field"
-          ></textarea>
-
-          <label for="contoh-en" class="block text-sm font-medium mb-2 mt-4">
-            Contoh EN <span class="text-red-500">*</span>
+        <!-- Amount -->
+        <div class="md:col-span-2">
+          <label for="amount" class="form-label">
+            Amount <span class="text-red-500">*</span>
           </label>
           <input
-            type="text"
-            id="contoh-en"
-            v-model="form.contoh_en"
+            id="amount"
+            type="number"
+            v-model="form.amount"
             required
             class="input-field"
           />
         </div>
-        
+
+        <!-- Action Buttons -->
         <div class="md:col-span-2 flex justify-end gap-4 mt-4">
-          <button
-            type="reset"
-            class="btn-secondary"
-          >
+          <button type="reset" class="btn-secondary" :disabled="isSubmitting">
             Reset
           </button>
+
           <button
             type="submit"
-            :disabled="isSubmitting"
+            :disabled="isSubmitting || !isFormValid"
+            :aria-disabled="isSubmitting"
             class="btn-primary"
           >
             <svg
@@ -108,12 +92,12 @@
                 r="10"
                 stroke="currentColor"
                 stroke-width="4"
-              ></circle>
+              />
               <path
                 class="opacity-75"
                 fill="currentColor"
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
+              />
             </svg>
             {{ isSubmitting ? "Submitting..." : "Submit" }}
           </button>
@@ -126,70 +110,95 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
-  title: "Create License",
+  title: "Edit Content",
   middleware: "auth",
 });
 
+const route = useRoute();
 const router = useRouter();
 const supabase = useSupabaseClient();
 
 const isSubmitting = ref(false);
-
 const form = ref({
+  icon: "",
   title_id: "",
   title_en: "",
-  description_id: "",
-  description_en: "",
-  contoh_id: "",
-  contoh_en: "",
+  amount: null,
 });
 
+const contentId = route.params.id;
+
+// Validate form fields
+const isFormValid = computed(() => {
+  return (
+    form.value.icon &&
+    form.value.title_id &&
+    form.value.title_en &&
+    form.value.amount
+  );
+});
+
+// Fetch data for the item to edit
+onMounted(async () => {
+  const { data, error } = await supabase
+    .from("content")
+    .select("*")
+    .eq("id", contentId)
+    .single();
+
+  if (error) {
+    alert("Failed to fetch data: " + error.message);
+    router.push("/dashboard/content");
+    return;
+  }
+
+  // Populate form with existing data
+  form.value = {
+    icon: data.icon,
+    title_id: data.title_id,
+    title_en: data.title_en,
+    amount: data.amount,
+  };
+});
+
+// Handle form submission (update)
 const handleSubmit = async () => {
-  if (
-    !form.value.title_id ||
-    !form.value.title_en ||
-    !form.value.description_id ||
-    !form.value.description_en ||
-    !form.value.contoh_id ||
-    !form.value.contoh_en
-  ) {
-    alert("Please fill in all required fields");
+  if (!isFormValid.value) {
+    alert("Please fill in all required fields.");
     return;
   }
 
   isSubmitting.value = true;
 
   try {
-    const { error } = await supabase.from("license").insert([
-      {
+    const { error } = await supabase
+      .from("content")
+      .update({
+        icon: form.value.icon,
         title_id: form.value.title_id,
         title_en: form.value.title_en,
-        description_id: form.value.description_id,
-        description_en: form.value.description_en,
-        contoh_id: form.value.contoh_id,
-        contoh_en: form.value.contoh_en,
-      },
-    ]);
+        amount: form.value.amount,
+      })
+      .eq("id", contentId);
 
     if (error) throw error;
 
-    alert("Data successfully submitted!");
-    router.push("/dashboard/license");
+    alert("Data successfully updated!");
+    router.push("/dashboard/content");
   } catch (err) {
-    alert("Submission failed: " + err.message);
+    alert("Failed to update data: " + err.message);
   } finally {
     isSubmitting.value = false;
   }
 };
 
+// Reset form fields
 const handleReset = () => {
   form.value = {
+    icon: "",
     title_id: "",
     title_en: "",
-    description_id: "",
-    description_en: "",
-    contoh_id: "",
-    contoh_en: "",
+    amount: null,
   };
 };
 </script>

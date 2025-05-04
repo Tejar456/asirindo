@@ -1,6 +1,29 @@
+<script setup>
+const supabase = useSupabaseClient()
+const license = ref([])
+const { locale } = useI18n()
+
+const titleField = computed(() => locale.value === 'en' ? 'title_en' : 'title_id')
+const descriptionField = computed(() => locale.value === 'en' ? 'description_en' : 'description_id')
+const contohField = computed(() => locale.value === 'en' ? 'contoh_en' : 'contoh_id')
+
+const getLisensi = async () => {
+  const { data, error } = await supabase
+    .from("license")
+    .select(`*`)
+  if (data) {
+    license.value = data
+    if (error) throw error
+  }
+}
+
+onMounted(() => {
+  getLisensi()
+})
+</script>
+
 <template>
   <section id="lisencing">
-    <!-- Solution -->
     <div class="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-20 mx-auto h-full md:h-full mb-10">
       <header class="text-center">
         <h1 class="text-2xl md:text-4xl font-semibold text-slate-800" data-aos="fade-up">
@@ -8,7 +31,6 @@
         </h1>
         <div class="mx-auto h-1 w-20 md:w-28 bg-yellow-400 rounded my-4" data-aos="fade-up"></div>
       </header>
-      <!-- Grid -->
       <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-20 pt-10">
         <div class="col-span-1 mb-5 md:mb-3">
           <img data-aos="fade-up" class="h-96 rounded-lg object-cover"
@@ -16,65 +38,20 @@
             alt="" />
         </div>
 
-        <!-- Cards Column -->
-        <div class="col-span-1">
-          <!-- Feature Card 2 -->
-          <div data-aos="fade-up"
-            class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4 max-w-xl">
-            <div class="flex items-center overflow-hidden">
-              <div class="grow p-4">
-                <div class="min-h-20 flex flex-col justify-center">
-                  <h3 class="font-semibold text-base text-gray-800">
-                    {{ $t("feature2") }}
-                  </h3>
-                  <p class="mt-2 text-sm text-gray-700">
-                    {{ $t("feature2content") }}
-                  </p>
-                  <p class="mt-2 text-sm text-gray-700">
-                    {{ $t("feature2exm") }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- Feature Card 3 -->
-          <div data-aos="fade-up"
-            class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4 max-w-xl">
-            <div class="flex items-center overflow-hidden">
-              <div class="grow p-4">
-                <div class="min-h-20 flex flex-col justify-center">
-                  <h3 class="font-semibold text-base text-gray-800">
-                    {{ $t("feature3") }}
-                  </h3>
-                  <p class="mt-2 text-sm text-gray-700">
-                    {{ $t("feature3content") }}
-                  </p>
-                  <p class="mt-2 text-sm text-gray-700">
-                    {{ $t("feature3exm") }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Feature Card 1 -->
-          <div data-aos="fade-up"
-            class="block border border-gray-200 rounded-lg shadow-md hover:shadow-lg focus:outline-none mb-4 max-w-xl">
-            <div class="flex items-center overflow-hidden">
-              <div class="grow p-4">
-                <div class="min-h-20 flex flex-col justify-center">
-                  <h3 class="font-semibold text-base text-gray-800">
-                    {{ $t("feature1") }}
-                  </h3>
-                  <p class="mt-2 text-sm text-gray-700">
-                    {{ $t("feature1content") }}
-                  </p>
-                  <p class="mt-2 text-sm text-gray-700">
-                    {{ $t("feature1exm") }}
-                  </p>
-                </div>
-              </div>
+        <div data-aos="fade-up">
+          <div class="grid grid-cols-1 gap-6">
+            <div v-for="(item, i) in license" :key="i"
+              class="p-4 bg-white rounded-lg border border-gray-100 hover:border-yellow-400 transition-all duration-300">
+              <h3 class="font-semibold text-base text-gray-800 mb-2">
+                {{ item[titleField] }}
+              </h3>
+              <p class="text-sm text-gray-700 mb-2">
+                {{ item[descriptionField] }}
+              </p>
+              <p class="text-sm text-gray-700">
+                {{ item[contohField] }}
+              </p>
             </div>
           </div>
         </div>

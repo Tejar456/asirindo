@@ -1,84 +1,145 @@
 <template>
-  <div class="max-w-5xl mx-auto p-6">
-    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
+  <div class="mx-auto">
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+        Create news Item
+      </h2>
+
       <form
         @submit.prevent="handleSubmit"
         @reset="handleReset"
         class="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        <div class="md:col-span-2">
-          <label for="image" class="block text-sm font-medium mb-2">
-            Gambar Berita
-          </label>
-          <input
-            type="file"
-            id="image"
-            accept="image/*"
-            @change="handleImageChange"
-            class="block w-full border border-gray-300 shadow-sm rounded-lg text-sm file:bg-gray-100 file:border-0 file:py-2 file:px-4 mb-4"
-          />
-          <div v-if="imagePreview" class="mt-4">
-            <span class="block text-xs text-gray-500 mb-2"
-              >Preview Gambar:</span
+        <!-- image Upload -->
+        <div>
+          <label class="block text-sm font-medium mb-2">image</label>
+
+          <div v-if="!imagePreview" class="w-full">
+            <!-- Dropzone -->
+            <label
+              for="dropzone-file"
+              class="flex flex-col items-center justify-center w-full h-96 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition"
             >
-            <div class="border p-2 inline-block rounded">
-              <img
-                :src="imagePreview"
-                alt="Preview"
-                class="w-40 h-auto object-contain rounded"
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <svg
+                  class="w-8 h-8 mb-4 text-gray-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 16"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                  />
+                </svg>
+                <p class="mb-2 text-sm text-gray-500">
+                  <span class="font-semibold">Click to upload</span> or drag and
+                  drop
+                </p>
+              </div>
+              <input
+                id="dropzone-file"
+                type="file"
+                accept="image/*"
+                class="hidden"
+                @change="onFileChange"
               />
-            </div>
+            </label>
+          </div>
+          <div
+            v-else
+            class="relative w-full h-96 border border-gray-300 rounded-lg overflow-hidden"
+          >
+            <img
+              :src="imagePreview"
+              alt="Preview"
+              class="w-full h-full object-cover"
+            />
+            <button
+              @click="clearImage"
+              type="button"
+              class="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center shadow"
+            >
+              ✕
+            </button>
           </div>
         </div>
 
-        <div class="md:col-span-2">
-          <label for="title" class="block text-sm font-medium mb-2"
-            >Judul Berita</label
-          >
+        <!-- Form Input -->
+        <div>
+          <label for="title-id" class="block text-sm font-medium mb-2">
+            Title ID <span class="text-red-500">*</span>
+          </label>
           <input
             type="text"
-            id="title"
+            id="title-id"
             v-model="form.title"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
+            required
+            class="input-field"
           />
-        </div>
 
-        <div class="md:col-span-2">
-          <label for="headline" class="block text-sm font-medium mb-2"
-            >Headline Singkat</label
-          >
+          <label for="title-en" class="block text-sm font-medium mb-2 mt-4">
+            Title EN <span class="text-red-500">*</span>
+          </label>
           <input
             type="text"
-            id="headline"
+            id="title-en"
             v-model="form.headline"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
+            required
+            class="input-field"
           />
-        </div>
 
-        <div class="md:col-span-2">
-          <label for="content" class="block text-sm font-medium mb-2"
-            >Isi Berita</label
-          >
+          <label for="desc-id" class="block text-sm font-medium mb-2 mt-4">
+            Description ID <span class="text-red-500">*</span>
+          </label>
           <textarea
-            id="content"
+            id="desc-id"
             v-model="form.content"
-            rows="5"
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring focus:ring-blue-500"
+            required
+            rows="4"
+            class="textarea-field"
           ></textarea>
         </div>
 
-        <div class="md:col-span-2 flex justify-end gap-4 pt-4">
+        <!-- Action Buttons -->
+        <div class="md:col-span-2 flex justify-end gap-4">
           <button
             type="reset"
-            class="px-4 py-2 rounded-lg border text-gray-700 bg-white hover:bg-gray-100"
+            class="btn-secondary"
           >
             Reset
           </button>
           <button
             type="submit"
-            class="px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700"
+            class="btn-primary"
+            :disabled="isSubmitting"
           >
-            Submit
+            <svg
+              v-if="isSubmitting"
+              class="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            {{ isSubmitting ? "Submitting..." : "Submit" }}
           </button>
         </div>
       </form>
@@ -89,75 +150,98 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
-  title: "Tambah Berita",
+  title: "Create news",
+  middleware: "auth",
 });
 
+const router = useRouter();
 const supabase = useSupabaseClient();
-
-const imageFile = ref(null);
+const isSubmitting = ref(false);
 const imagePreview = ref(null);
+
 const form = ref({
+  image: null,
   title: "",
   headline: "",
   content: "",
+  description_en: "",
 });
 
-function handleImageChange(event) {
-  const file = event.target.files[0];
+const onFileChange = (e) => {
+  const file = e.target.files[0];
   if (file) {
-    imageFile.value = file;
-    imagePreview.value = URL.createObjectURL(file);
-  } else {
-    imageFile.value = null;
-    imagePreview.value = null;
+    form.value.image = file;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      imagePreview.value = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
-}
+};
 
-async function handleSubmit() {
-  if (!imageFile.value) {
-    alert("Silakan pilih gambar terlebih dahulu.");
-    return;
-  }
-
-  const fileName = `${Date.now()}-${imageFile.value.name}`;
-  const { data: uploadData, error: uploadError } = await supabase.storage
-    .from("img")
-    .upload(fileName, imageFile.value);
-
-  if (uploadError) {
-    console.error("Upload error:", uploadError.message);
-    alert("Gagal mengunggah gambar.");
-    return;
-  }
-
-  const { data: publicUrlData } = supabase.storage
-    .from("img")
-    .getPublicUrl(uploadData.path);
-
-  const imageUrl = publicUrlData.publicUrl;
-
-  const { error: insertError } = await supabase.from("news").insert({
-    title: form.value.title,
-    headline: form.value.headline,
-    content: form.value.content,
-    image: imageUrl,
-  });
-
-  if (insertError) {
-    console.error("Insert error:", insertError.message);
-    alert("Gagal menyimpan data.");
-    return;
-  }
-
-  alert("Berita berhasil ditambahkan!");
-  handleReset();
-}
-
-function handleReset() {
-  form.value.title = "";
-  form.value.headline = "";
-  form.value.content = "";
-  imageFile.value = null;
+const clearImage = () => {
+  form.value.image = null;
   imagePreview.value = null;
-}
+  const input = document.getElementById("dropzone-file");
+  if (input) input.value = "";
+};
+
+const handleSubmit = async () => {
+  if (!form.value.title || !form.value.headline || !form.value.content) {
+    alert("Please fill all required fields");
+    return;
+  }
+
+  isSubmitting.value = true;
+
+  try {
+    let imageUrl = null;
+
+    if (form.value.image) {
+      const file = form.value.image;
+      const fileName = `news-${Date.now()}-${file.name}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("img")
+        .upload(fileName, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: urlData } = supabase.storage
+        .from("img")
+        .getPublicUrl(fileName);
+      imageUrl = urlData.publicUrl;
+    }
+
+    const { error: insertError } = await supabase.from("news").insert([
+      {
+        image: imageUrl,
+        title: form.value.title,
+        headline: form.value.headline,
+        content: form.value.content,
+      },
+    ]);
+
+    if (insertError) throw insertError;
+
+    alert("Data successfully submitted!");
+    router.push("/dashboard/news");
+  } catch (err) {
+    alert("Failed to submit: " + err.message);
+  } finally {
+    isSubmitting.value = false;
+  }
+};
+
+const handleReset = () => {
+  form.value = {
+    image: null,
+    title: "",
+    headline: "",
+    content: "",
+  };
+  imagePreview.value = null;
+  isSubmitting.value = false;
+};
 </script>

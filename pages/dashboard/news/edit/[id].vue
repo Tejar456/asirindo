@@ -2,7 +2,7 @@
   <div class="mx-auto">
     <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
       <h2 class="text-2xl font-semibold text-gray-800 mb-6">
-        Edit Management Item
+        {{ isEditing ? "Edit News Item" : "Create News Item" }}
       </h2>
 
       <form
@@ -71,53 +71,44 @@
 
         <!-- Form Input -->
         <div>
-          <label for="position-id" class="block text-sm font-medium mb-2">
-            Name <span class="text-red-500">*</span>
+          <label for="title-id" class="block text-sm font-medium mb-2">
+            Title ID <span class="text-red-500">*</span>
           </label>
           <input
             type="text"
-            id="position-id"
-            v-model="form.name"
+            id="title-id"
+            v-model="form.title"
             required
             class="input-field"
           />
 
-          <label for="position-id" class="block text-sm font-medium mb-2 mt-4">
-            Position Id <span class="text-red-500">*</span>
+          <label for="title-en" class="block text-sm font-medium mb-2 mt-4">
+            Title EN <span class="text-red-500">*</span>
           </label>
           <input
             type="text"
-            id="position-id"
-            v-model="form.position_id"
+            id="title-en"
+            v-model="form.headline"
             required
             class="input-field"
           />
 
-          <label for="position-en" class="block text-sm font-medium mb-2 mt-4">
-            Position EN <span class="text-red-500">*</span>
+          <label for="desc-id" class="block text-sm font-medium mb-2 mt-4">
+            Description ID <span class="text-red-500">*</span>
           </label>
-          <input
-            type="text"
-            id="position-en"
-            v-model="form.position_en"
+          <textarea
+            id="desc-id"
+            v-model="form.content"
             required
-            class="input-field"
-          />
+            rows="4"
+            class="textarea-field"
+          ></textarea>
         </div>
 
         <!-- Action Buttons -->
         <div class="md:col-span-2 flex justify-end gap-4">
-          <button
-            type="reset"
-            class="btn-secondary"
-          >
-            Reset
-          </button>
-          <button
-            type="submit"
-            class="btn-primary"
-            :disabled="isSubmitting"
-          >
+          <button type="reset" class="btn-secondary">Reset</button>
+          <button type="submit" class="btn-primary" :disabled="isSubmitting">
             <svg
               v-if="isSubmitting"
               class="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
@@ -150,7 +141,7 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
-  position: "Edit Management",
+  title: "Create or Edit News",
   middleware: "auth",
 });
 
@@ -158,45 +149,47 @@ const router = useRouter();
 const supabase = useSupabaseClient();
 const isSubmitting = ref(false);
 const imagePreview = ref(null);
+const isEditing = ref(false); // To track if we're editing or creating
+const newsId = useRoute().params.id; // Assuming the news item ID is passed as route parameter
 
-// Assuming you have an ID passed in the route query for editing
-const id = route.query.id;
 const form = ref({
   image: null,
-  name: "",
-  position_id: "",
-  position_en: "",
+  title: "",
+  headline: "",
+  content: "",
   description_en: "",
 });
 
-const fetchItemData = async () => {
-  try {
-    const { data, error } = await supabase
-      .from("management")
-      .select("*")
-      .eq("id", id)
-      .single();
+// Load the news data for editing if an ID is provided
+const loadNewsData = async () => {
+  if (!newsId) return;
 
-    if (error) throw error;
-
-    form.value.name = data.name;
-    form.value.position_id = data.position_id;
-    form.value.position_en = data.position_en;
-    imagePreview.value = data.image || null;
-  } catch (error) {
-    alert("Failed to fetch data: " + error.message);
+  isEditing.value = true;
+  const { data, error } = await supabase
+    .from("news")
+    .select("*")
+    .eq("id", newsId)
+    .single();
+  if (error) {
+    alert("Error loading data: " + error.message);
+    return;
   }
+
+  form.value = {
+    image: null,
+    title: data.title,
+    headline: data.headline,
+    content: data.content,
+    description_en: data.description_en,
+  };
+  imagePreview.value = data.image;
 };
 
-onMounted(() => {
-  fetchItemData();
-});
-
+// Handle file input change
 const onFileChange = (e) => {
   const file = e.target.files[0];
   if (file) {
     form.value.image = file;
-
     const reader = new FileReader();
     reader.onload = (e) => {
       imagePreview.value = e.target.result;
@@ -212,8 +205,9 @@ const clearImage = () => {
   if (input) input.value = "";
 };
 
+// Handle form submission
 const handleSubmit = async () => {
-  if (!form.value.name || !form.value.position_id || !form.value.position_en) {
+  if (!form.value.title || !form.value.headline || !form.value.content) {
     alert("Please fill all required fields");
     return;
   }
@@ -225,7 +219,7 @@ const handleSubmit = async () => {
 
     if (form.value.image) {
       const file = form.value.image;
-      const fileName = `management-${Date.now()}-${file.name}`;
+      const fileName = `news-${Date.now()}-${file.name}`;
 
       const { error: uploadError } = await supabase.storage
         .from("img")
@@ -239,29 +233,52 @@ const handleSubmit = async () => {
       imageUrl = urlData.publicUrl;
     }
 
-    const { error: updateError } = await supabase
-      .from("management")
-      .update({
-        image: imageUrl,
-        name: form.value.name,
-        position_id: form.value.position_id,
-        position_en: form.value.position_en,
-      })
-      .eq("id", id);
+    if (isEditing.value) {
+      const { error: updateError } = await supabase
+        .from("news")
+        .update({
+          image: imageUrl,
+          title: form.value.title,
+          headline: form.value.headline,
+          content: form.value.content,
+        })
+        .eq("id", newsId);
 
-    if (updateError) throw updateError;
+      if (updateError) throw updateError;
+      alert("News item successfully updated!");
+    } else {
+      const { error: insertError } = await supabase.from("news").insert([
+        {
+          image: imageUrl,
+          title: form.value.title,
+          headline: form.value.headline,
+          content: form.value.content,
+        },
+      ]);
 
-    alert("Data successfully updated!");
-    router.push("/dashboard/management");
-  } catch (error) {
-    alert("Failed to submit: " + error.message);
+      if (insertError) throw insertError;
+      alert("News item successfully created!");
+    }
+
+    router.push("/dashboard/news");
+  } catch (err) {
+    alert("Failed to submit: " + err.message);
   } finally {
     isSubmitting.value = false;
   }
 };
 
+// Handle form reset
 const handleReset = () => {
-  fetchItemData();  // Reset to fetched data
+  form.value = {
+    image: null,
+    title: "",
+    headline: "",
+    content: "",
+  };
+  imagePreview.value = null;
   isSubmitting.value = false;
 };
+
+loadNewsData(); // Load data if editing
 </script>

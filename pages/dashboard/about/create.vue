@@ -79,8 +79,7 @@
             id="title-id"
             v-model="form.title_id"
             required
-            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Enter title in Indonesian"
+            class="input-field"            
           />
 
           <label for="title-en" class="block text-sm font-medium mb-2 mt-4">
@@ -91,8 +90,7 @@
             id="title-en"
             v-model="form.title_en"
             required
-            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Enter title in English"
+            class="input-field"            
           />
 
           <label for="desc-id" class="block text-sm font-medium mb-2 mt-4">
@@ -103,8 +101,7 @@
             v-model="form.description_id"
             required
             rows="4"
-            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
-            placeholder="Enter description in Indonesian"
+            class="textarea-field"            
           ></textarea>
 
           <label for="desc-en" class="block text-sm font-medium mb-2 mt-4">
@@ -115,8 +112,7 @@
             v-model="form.description_en"
             required
             rows="4"
-            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
-            placeholder="Enter description in English"
+            class="textarea-field"            
           ></textarea>
         </div>
 
@@ -124,13 +120,13 @@
         <div class="md:col-span-2 flex justify-end gap-4">
           <button
             type="reset"
-            class="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-gray-200 font-medium text-sm transition-colors"
+            class="btn-secondary"
           >
             Reset
           </button>
           <button
             type="submit"
-            class="px-5 py-2.5 rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 font-medium text-sm transition-colors flex items-center"
+            class="btn-primary"
             :disabled="isSubmitting"
           >
             <svg
@@ -163,9 +159,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-
 definePageMeta({
   layout: "dashboard",
   title: "Create About",

@@ -1,9 +1,7 @@
 <template>
   <div class="mx-auto">
     <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6">
-        Edit Management Item
-      </h2>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Edit Hero Item</h2>
 
       <form
         @submit.prevent="handleSubmit"
@@ -12,7 +10,7 @@
       >
         <!-- image Upload -->
         <div>
-          <label class="block text-sm font-medium mb-2">Image</label>
+          <label class="block text-sm font-medium mb-2">image</label>
 
           <div v-if="!imagePreview" class="w-full">
             <!-- Dropzone -->
@@ -71,35 +69,24 @@
 
         <!-- Form Input -->
         <div>
-          <label for="position-id" class="block text-sm font-medium mb-2">
-            Name <span class="text-red-500">*</span>
+          <label for="title-id" class="block text-sm font-medium mb-2">
+            Title ID <span class="text-red-500">*</span>
           </label>
           <input
             type="text"
-            id="position-id"
-            v-model="form.name"
+            id="title-id"
+            v-model="form.title_id"
             required
             class="input-field"
           />
 
-          <label for="position-id" class="block text-sm font-medium mb-2 mt-4">
-            Position Id <span class="text-red-500">*</span>
+          <label for="title-en" class="block text-sm font-medium mb-2 mt-4">
+            Title EN <span class="text-red-500">*</span>
           </label>
           <input
             type="text"
-            id="position-id"
-            v-model="form.position_id"
-            required
-            class="input-field"
-          />
-
-          <label for="position-en" class="block text-sm font-medium mb-2 mt-4">
-            Position EN <span class="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="position-en"
-            v-model="form.position_en"
+            id="title-en"
+            v-model="form.title_en"
             required
             class="input-field"
           />
@@ -107,17 +94,8 @@
 
         <!-- Action Buttons -->
         <div class="md:col-span-2 flex justify-end gap-4">
-          <button
-            type="reset"
-            class="btn-secondary"
-          >
-            Reset
-          </button>
-          <button
-            type="submit"
-            class="btn-primary"
-            :disabled="isSubmitting"
-          >
+          <button type="reset" class="btn-secondary">Reset</button>
+          <button type="submit" class="btn-primary" :disabled="isSubmitting">
             <svg
               v-if="isSubmitting"
               class="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
@@ -150,48 +128,49 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
-  position: "Edit Management",
+  title: "Edit Hero",
   middleware: "auth",
 });
 
+const route = useRoute();
 const router = useRouter();
 const supabase = useSupabaseClient();
+
 const isSubmitting = ref(false);
 const imagePreview = ref(null);
 
-// Assuming you have an ID passed in the route query for editing
-const id = route.query.id;
 const form = ref({
   image: null,
-  name: "",
-  position_id: "",
-  position_en: "",
-  description_en: "",
+  title_id: "",
+  title_en: "",
 });
 
-const fetchItemData = async () => {
-  try {
-    const { data, error } = await supabase
-      .from("management")
-      .select("*")
-      .eq("id", id)
-      .single();
+const heroId = route.params.id;
 
-    if (error) throw error;
+// Fetch the hero data for editing
+onMounted(async () => {
+  const { data, error } = await supabase
+    .from("hero")
+    .select("*")
+    .eq("id", heroId)
+    .single();
 
-    form.value.name = data.name;
-    form.value.position_id = data.position_id;
-    form.value.position_en = data.position_en;
-    imagePreview.value = data.image || null;
-  } catch (error) {
-    alert("Failed to fetch data: " + error.message);
+  if (error) {
+    alert("Failed to fetch hero data: " + error.message);
+    router.push("/dashboard/hero");
+    return;
   }
-};
 
-onMounted(() => {
-  fetchItemData();
+  form.value = {
+    title_id: data.title_id,
+    title_en: data.title_en,
+    image: data.image,
+  };
+
+  imagePreview.value = data.image; // If an image exists, show it as a preview
 });
 
+// Handle file upload
 const onFileChange = (e) => {
   const file = e.target.files[0];
   if (file) {
@@ -205,6 +184,7 @@ const onFileChange = (e) => {
   }
 };
 
+// Clear the image preview
 const clearImage = () => {
   form.value.image = null;
   imagePreview.value = null;
@@ -212,8 +192,9 @@ const clearImage = () => {
   if (input) input.value = "";
 };
 
+// Handle form submission (update hero data)
 const handleSubmit = async () => {
-  if (!form.value.name || !form.value.position_id || !form.value.position_en) {
+  if (!form.value.title_id || !form.value.title_en) {
     alert("Please fill all required fields");
     return;
   }
@@ -225,7 +206,7 @@ const handleSubmit = async () => {
 
     if (form.value.image) {
       const file = form.value.image;
-      const fileName = `management-${Date.now()}-${file.name}`;
+      const fileName = `hero-${Date.now()}-${file.name}`;
 
       const { error: uploadError } = await supabase.storage
         .from("img")
@@ -240,28 +221,33 @@ const handleSubmit = async () => {
     }
 
     const { error: updateError } = await supabase
-      .from("management")
+      .from("hero")
       .update({
-        image: imageUrl,
-        name: form.value.name,
-        position_id: form.value.position_id,
-        position_en: form.value.position_en,
+        image: imageUrl || form.value.image, // Use the new image if exists
+        title_id: form.value.title_id,
+        title_en: form.value.title_en,
       })
-      .eq("id", id);
+      .eq("id", heroId);
 
     if (updateError) throw updateError;
 
     alert("Data successfully updated!");
-    router.push("/dashboard/management");
-  } catch (error) {
-    alert("Failed to submit: " + error.message);
+    router.push("/dashboard/hero");
+  } catch (err) {
+    alert("Failed to update data: " + err.message);
   } finally {
     isSubmitting.value = false;
   }
 };
 
+// Handle form reset
 const handleReset = () => {
-  fetchItemData();  // Reset to fetched data
+  form.value = {
+    image: null,
+    title_id: "",
+    title_en: "",
+  };
+  imagePreview.value = null;
   isSubmitting.value = false;
 };
 </script>
