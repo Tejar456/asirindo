@@ -28,7 +28,6 @@
                         </a>
 
 
-                        <!-- Twitter -->
                         <!-- X -->
                         <a href="https://x.com/asirindo" target="_blank"
                             class="inline-flex items-center gap-x-2 text-gray-500 hover:text-white transition-colors duration-300">

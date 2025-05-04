@@ -90,7 +90,6 @@ onUnmounted(() => {
                   class="object-cover w-full h-full brightness-50"
                   @error="item.imageError = true"
                 />
-                <!-- Fallback untuk gambar error -->
                 <div
                   v-if="item.imageError"
                   class="absolute inset-0 bg-gray-800 flex items-center justify-center"

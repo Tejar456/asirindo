@@ -18,7 +18,6 @@ onMounted(() => {
 })
 </script>
 <template>
-  <!-- Title -->
   <div class="h-[30vh] w-full relative mb-5 shadow-md flex items-center justify-center">
     <div>
       <div v-if="loading">

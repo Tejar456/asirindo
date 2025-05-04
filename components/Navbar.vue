@@ -9,12 +9,10 @@
       }">
       <nav
         class="relative max-w-[85rem] w-full md:flex md:items-center md:justify-between md:gap-3 mx-auto px-4 py-auto sm:px-6 lg:px-8 py-2">
-        <!-- Logo w/ Collapse Button -->
         <div class="flex items-center justify-between">
           <Nuxt-link class="flex gap-3" to="#" aria-label="Brand">
             <img src="assets/img/logo.png" alt="logo" class="w-44 md:w-64 mt-1 md:mt-0" />
           </Nuxt-link>
-          <!-- Collapse Button -->
           <div class="md:hidden">
             <button type="button"
               class="hs-collapse-toggle relative size-9 flex justify-center items-center text-sm font-semibold rounded-lg border border-gray-200 text-white bg-[#1E1E1E] focus:outline-none focus:bg-[#1E1E1E] disabled:opacity-50 disabled:pointer-events-none"

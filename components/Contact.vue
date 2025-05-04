@@ -15,11 +15,10 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16 mt-10">
-          <!-- Form Column -->
           <div class="md:order-2 order-1" data-aos="zoom-in">
             <form action="https://formspree.io/f/mgvozkbb" method="POST">
               <div class="space-y-4">
-                <!-- Name Input -->
+                <!-- Name  -->
                 <div class="relative">
                   <input type="text" id="hs-tac-input-name" name="Name"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
@@ -30,7 +29,7 @@
                   </label>
                 </div>
 
-                <!-- Email Input -->
+                <!-- Email  -->
                 <div class="relative">
                   <input type="email" id="hs-tac-input-email"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
@@ -41,7 +40,7 @@
                   </label>
                 </div>
 
-                <!-- Subject Input -->
+                <!-- Subject  -->
                 <div class="relative">
                   <input type="text" id="hs-tac-input-subject"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
@@ -52,7 +51,7 @@
                   </label>
                 </div>
 
-                <!-- Message Textarea -->
+                <!-- Message  -->
                 <div class="relative">
                   <textarea id="hs-tac-message"
                     class="peer p-4 block w-full border border-black rounded-lg text-sm text-black placeholder:text-transparent focus:outline-none focus:ring-0 focus:border-black disabled:opacity-50 disabled:pointer-events-none focus:pt-6 focus:pb-2 [&:not(:placeholder-shown)]:pt-6 [&:not(:placeholder-shown)]:pb-2 autofill:pt-6 autofill:pb-2"
@@ -64,7 +63,7 @@
                 </div>
               </div>
 
-              <!-- Submit Button -->
+              <!-- Submit -->
               <div class="mt-6">
                 <button type="submit"
                   class="group inline-flex items-center gap-x-2 py-3 px-4 bg-yellow-400 hover:bg-yellow-300 transition-colors duration-300 font-medium text-sm text-neutral-800 rounded-lg focus:outline-none">

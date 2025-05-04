@@ -1,15 +1,14 @@
 <script setup>
-
 const supabase = useSupabaseClient()
 const route = useRoute()
-const news = ref(null) // Change from array to single object
+const news = ref(null) 
 
 const getNews = async () => {
   const { data, error } = await supabase
     .from("news")
     .select('*')
     .eq('id', route.params.id)
-    .single() // Get single record
+    .single() 
 
   if (error) {
     console.error('Error:', error)
@@ -18,7 +17,7 @@ const getNews = async () => {
 
   if (data) {
     news.value = data
-    console.log('Fetched news:', data) // Debug log
+    console.log('Fetched news:', data) 
   }
 }
 
@@ -84,21 +83,13 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Loading state -->
-    <!-- Replace the loading state div with this -->
+
     <div v-else class="max-w-3xl mx-auto px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8">
       <div class="max-w-2xl animate-pulse">
-        <!-- Title skeleton -->
         <div class="h-8 bg-gray-200 rounded-lg w-3/4 mb-4"></div>
-
-        <!-- Headline skeleton -->
         <div class="h-4 bg-gray-200 rounded-lg w-full mb-8"></div>
-
-        <!-- Image skeleton -->
         <div class="aspect-video bg-gray-200 rounded-xl mb-8"></div>
-
-        <!-- Content skeleton -->
-        <div class="space-y-3">
+          <div class="space-y-3">
           <div class="h-4 bg-gray-200 rounded-lg w-full"></div>
           <div class="h-4 bg-gray-200 rounded-lg w-11/12"></div>
           <div class="h-4 bg-gray-200 rounded-lg w-full"></div>
