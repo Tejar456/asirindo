@@ -17,7 +17,9 @@ onMounted(() => {
 
 <template>
   <div>
-    <h1 class="flex justify-center items-center text-2xl font-semibold">
+    <h1
+      class="flex justify-center items-center text-3xl font-semibold h-screen"
+    >
       Logout
     </h1>
   </div>
